@@ -1,6 +1,6 @@
-package org.gestaoescolar.CustomExceptions;
+package files.CustomExceptions;
 
-import org.gestaoescolar.Contatos.ContatosEnumeration;
+import files.Contatos.ContatosEnumeration;
 
 @SuppressWarnings("unused")
 public class ContatoNotFoundException extends RuntimeException{

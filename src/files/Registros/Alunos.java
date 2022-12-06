@@ -1,6 +1,6 @@
-package org.gestaoescolar.Registros;
+package files.Registros;
 
-import org.gestaoescolar.Contatos.Contatos;
+import files.Contatos.Contatos;
 
 @SuppressWarnings("unused")
 public class Alunos {

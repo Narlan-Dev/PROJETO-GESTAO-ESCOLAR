@@ -1,6 +1,6 @@
-package org.gestaoescolar.Contatos;
+package files.Contatos;
 
-import org.gestaoescolar.CustomExceptions.ContatoNotFoundException;
+import files.CustomExceptions.ContatoNotFoundException;
 
 import java.util.HashSet;
 
