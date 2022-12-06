@@ -33,6 +33,11 @@ public class Login extends javax.swing.JFrame {
         jButtonEntrar.setBorder(null);
         jButtonEntrar.setContentAreaFilled(false);
         jButtonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 170, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LoginBackgroud.png"))); // NOI18N
@@ -40,6 +45,11 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        new TelaPrincipal().show();
+        this.dispose();
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
 

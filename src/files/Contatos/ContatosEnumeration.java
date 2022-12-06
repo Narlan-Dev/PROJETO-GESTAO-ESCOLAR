@@ -1,4 +1,4 @@
-package org.gestaoescolar.Contatos;
+package files.Contatos;
 
 @SuppressWarnings("unused")
 public enum ContatosEnumeration {
