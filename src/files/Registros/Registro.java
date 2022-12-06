@@ -1,4 +1,4 @@
-package org.gestaoescolar.Registros;
+package files.Registros;
 
 @SuppressWarnings("unused")
 public interface Registro {
