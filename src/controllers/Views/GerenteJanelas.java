@@ -8,9 +8,9 @@ public class GerenteJanelas {
         GerenteJanelas.jPanel = jPanel;
     }
     public void abrirJanelas(JInternalFrame jInternalFrame){
+            jPanel.removeAll();
             if(jInternalFrame.isVisible()){
-                jInternalFrame.toFront();
-                jInternalFrame.requestFocus();
+                jPanel.add(jInternalFrame);
             }else{
             jPanel.add(jInternalFrame);
             jInternalFrame.setVisible(true);
