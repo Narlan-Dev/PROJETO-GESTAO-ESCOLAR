@@ -1,6 +1,6 @@
-package files.CustomExceptions;
+package models.CustomExceptions;
 
-import files.Contatos.ContatosEnumeration;
+import models.Contatos.ContatosEnumeration;
 
 @SuppressWarnings("unused")
 public class ContatoNotFoundException extends RuntimeException{

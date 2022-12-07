@@ -1,6 +1,6 @@
-package files.Registros;
+package models.Registros;
 
-import files.Contatos.Contatos;
+import models.Contatos.Contatos;
 
 @SuppressWarnings("unused")
 public class Alunos {

@@ -1,4 +1,4 @@
-package files.Contatos;
+package models.Contatos;
 
 @SuppressWarnings("unused")
 public enum ContatosEnumeration {

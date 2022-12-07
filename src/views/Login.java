@@ -1,4 +1,4 @@
-package files;
+package views;
 
 public class Login extends javax.swing.JFrame {
 
@@ -40,7 +40,7 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 170, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LoginBackgroud.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/resources/LoginBackgroud.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();

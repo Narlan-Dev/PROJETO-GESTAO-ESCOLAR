@@ -1,6 +1,6 @@
-package files.Contatos;
+package models.Contatos;
 
-import files.CustomExceptions.ContatoNotFoundException;
+import models.CustomExceptions.ContatoNotFoundException;
 
 import java.util.HashSet;
 

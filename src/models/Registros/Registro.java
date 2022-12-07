@@ -1,4 +1,4 @@
-package files.Registros;
+package models.Registros;
 
 @SuppressWarnings("unused")
 public interface Registro {
