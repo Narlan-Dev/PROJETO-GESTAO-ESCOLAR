@@ -13,7 +13,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldLogin = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButtonEntrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelBackgorud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,8 +40,8 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 170, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/resources/LoginBackgroud.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        jLabelBackgorud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/resources/LoginBackgroud.png"))); // NOI18N
+        getContentPane().add(jLabelBackgorud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,7 +79,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelBackgorud;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
