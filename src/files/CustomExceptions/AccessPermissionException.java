@@ -1,4 +1,4 @@
-package org.gestaoescolar.CustomExceptions;
+package files.CustomExceptions;
 
 @SuppressWarnings("unused")
 public class AccessPermissionException extends Exception {
