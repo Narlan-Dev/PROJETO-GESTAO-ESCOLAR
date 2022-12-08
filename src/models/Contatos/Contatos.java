@@ -29,8 +29,9 @@ public class Contatos {
         }
     }
 
-    public void deleteContatoByKey(ContatosEnumeration tipoContato)
+    public void deleteContato(Contato contato)
             throws ContatoNotFoundException {
+        this.contatos.remove(contato);
     }
 
     public HashSet<Contato> getContatos() {
@@ -50,8 +51,10 @@ public class Contatos {
         this.contatos.remove(contato);
     }
 
-    public void delete(HashSet<Contato> contatos){
-        this.contatos.removeAll(contatos);
+    public void delete(){
+        for (Contato contato : this.contatos){
+            this.delete(contato);
+        }
     }
 
 }
