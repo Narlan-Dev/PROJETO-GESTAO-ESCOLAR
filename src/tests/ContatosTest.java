@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import models.Contatos.Contato;
 import models.Contatos.Contatos;
@@ -43,4 +43,4 @@ public class ContatosTest {
     @Test
     public void testDelete() {
     }
-}
+}*/
