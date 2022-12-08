@@ -1,2 +1,7 @@
+/src/models/.idea/
+/src/models/out/
+.idea/
+/out/
+/src/out/
 /ProjetoGestao/build/
 /build/
