@@ -2,8 +2,9 @@ package models.Registros;
 
 import models.Contatos.Contatos;
 
+
 @SuppressWarnings("unused")
-public class Alunos {
+public class Alunos implements Registro{
 
     private String nomeCompleto;
     private String cadastroPessoaFisica;
@@ -26,5 +27,10 @@ public class Alunos {
 
     public Contatos getContatos(){
         return this.contatos;
+    }
+
+    @Override
+    public Object getSerialized() {
+        return null;
     }
 }

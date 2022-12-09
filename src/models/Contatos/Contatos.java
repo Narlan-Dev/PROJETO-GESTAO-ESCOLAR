@@ -1,11 +1,13 @@
 package models.Contatos;
 
 import models.CustomExceptions.ContatoNotFoundException;
+import models.Registros.Registro;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 @SuppressWarnings("unused")
-public class Contatos {
+public class Contatos implements Registro {
 
     private HashSet<Contato> contatos;
 
@@ -57,4 +59,8 @@ public class Contatos {
         }
     }
 
+    @Override
+    public Object getSerialized() {
+        return null;
+    }
 }
