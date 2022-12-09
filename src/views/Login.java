@@ -1,5 +1,4 @@
 package views;
-
 import views.Cordenador.TelaPrincipal;
 
 public class Login extends javax.swing.JFrame {
@@ -23,6 +22,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLogin.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
         jTextFieldLogin.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldLogin.setToolTipText("");
         jTextFieldLogin.setBorder(null);
         getContentPane().add(jTextFieldLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 300, 30));
 
