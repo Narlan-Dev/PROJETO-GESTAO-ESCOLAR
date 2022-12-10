@@ -128,7 +128,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jListAnoLetivo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListAnoLetivo.setSelectionBackground(new java.awt.Color(91, 124, 254));
+        jListAnoLetivo.setSelectionBackground(new java.awt.Color(83, 116, 239));
         AnoLetivo.setViewportView(jListAnoLetivo);
 
         javax.swing.GroupLayout jPanelListsLayout = new javax.swing.GroupLayout(jPanelLists);

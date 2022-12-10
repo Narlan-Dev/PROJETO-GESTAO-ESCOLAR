@@ -1,6 +1,5 @@
 package views.Cordenador;
 import controllers.Views.GerenteJanelas;
-import javax.swing.JPanel;
 import views.Login;
 
 public class TelaPrincipal extends javax.swing.JFrame {

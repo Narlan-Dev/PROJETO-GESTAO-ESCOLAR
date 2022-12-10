@@ -153,7 +153,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         jListDiciplinas.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jListDiciplinas.setForeground(new java.awt.Color(24, 33, 53));
         jListDiciplinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListDiciplinas.setSelectionBackground(new java.awt.Color(91, 124, 254));
+        jListDiciplinas.setSelectionBackground(new java.awt.Color(83, 116, 239));
         Diciplinas.setViewportView(jListDiciplinas);
 
         AnoLetivo.setBorder(null);
@@ -169,7 +169,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jListAnoLetivo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListAnoLetivo.setSelectionBackground(new java.awt.Color(91, 124, 254));
+        jListAnoLetivo.setSelectionBackground(new java.awt.Color(83, 116, 239));
         AnoLetivo.setViewportView(jListAnoLetivo);
 
         javax.swing.GroupLayout jPanelListsLayout = new javax.swing.GroupLayout(jPanelLists);
