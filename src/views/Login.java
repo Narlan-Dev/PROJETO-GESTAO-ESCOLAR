@@ -1,10 +1,16 @@
 package views;
 import views.Cordenador.TelaPrincipal;
+import controllers.Usuarios.Usuarios;
+import models.Usuario.*;
 
 public class Login extends javax.swing.JFrame {
-
+    private Usuario user;
     public Login() {
         initComponents();
+        
+        /*Teste*/
+        Usuarios.add(new ADM("ADM", "A2020102834", "123"));
+        Usuarios.add(new ADM("Narlan", "A2020102835", "123"));
     }
 
     @SuppressWarnings("unchecked")
@@ -49,8 +55,32 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        new TelaPrincipal().show();
-        this.dispose();
+        /* Apenas testes, mas ta funcional */
+        try {
+            user = Usuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
+            if(user.getType().equals("adm")){
+                TelaPrincipal tela = new TelaPrincipal();
+                tela.changeApresentacaoName(user);
+                tela.show();
+                this.dispose();
+                //Terminar funcionalidades
+            }
+            if(user.getType().equals("coordenador")){
+                TelaPrincipal tela = new TelaPrincipal();
+                tela.changeApresentacaoName(user);
+                tela.show();
+                this.dispose();
+                //Terminar funcionalidades
+            }
+            if(user.getType().equals("professor")){
+                //Criar as telas e as classes
+            }
+            if(user.getType().equals("aluno")){
+                //Criar as telas e as terminar classes
+            }
+        } catch (Exception e) {
+            jTextFieldLogin.setText("conta invalida");
+        }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
