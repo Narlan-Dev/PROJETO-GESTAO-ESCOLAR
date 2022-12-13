@@ -1,11 +1,13 @@
 package models.Coordenador;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Sala {
-    private String icon ="C:\\Narlan\\PROJETOS\\PROJETO_GESTAO_ESCOLAR\\src\\views\\Cordenador\\Resources\\iconSalas.PNG";
+    private Icon iconSala = new ImageIcon(getClass().getResource("/views/Cordenador/Resources/iconSalas.png"));
     private String nome ="";
     
-    public String getIcon(){
-        return this.icon;
+    public Icon getIcon(){
+        return this.iconSala;
     }
     public String getName(){
         return this.nome;

@@ -8,9 +8,9 @@ import models.Coordenador.Sala;
 
 public abstract class ControllerSalas implements Controller {
     private static final Map<Object, Icon> icons = new HashMap<Object, Icon>();
-    
+
     public static void add(Sala sala){
-        icons.put(sala.getName(), new ImageIcon(sala.getIcon()));
+        icons.put(sala.getName(), sala.getIcon());
     }
     public static Map<Object, Icon> getMap(){
         return icons;
