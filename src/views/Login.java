@@ -2,9 +2,11 @@ package views;
 import views.Cordenador.TelaPrincipal;
 import controllers.Usuarios.Usuarios;
 import models.Usuario.*;
+//import models.Registros.*;
 
 public class Login extends javax.swing.JFrame {
     private Usuario user;
+    
     public Login() {
         initComponents();
         
@@ -58,14 +60,14 @@ public class Login extends javax.swing.JFrame {
         /* Apenas testes, mas ta funcional */
         try {
             user = Usuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
-            if(user.getType().equals("adm")){
+            if(user instanceof ADM){
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.changeApresentacaoName(user);
                 tela.show();
                 this.dispose();
                 //Terminar funcionalidades
             }
-            if(user.getType().equals("coordenador")){
+            /*if(user.getType().equals("coordenador")){
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.changeApresentacaoName(user);
                 tela.show();
@@ -75,12 +77,16 @@ public class Login extends javax.swing.JFrame {
             if(user.getType().equals("professor")){
                 //Criar as telas e as classes
             }
-            if(user.getType().equals("aluno")){
+            if(user instanceof Alunos){
                 //Criar as telas e as terminar classes
-            }
+            }*/
         } catch (Exception e) {
             jTextFieldLogin.setText("conta invalida");
         }
+        /*TelaPrincipal tela = new TelaPrincipal();
+        //tela.changeApresentacaoName(user);
+        tela.show();
+        this.dispose();*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {

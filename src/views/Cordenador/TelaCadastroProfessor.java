@@ -3,15 +3,15 @@ import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
-    private static TelaCadastroProfessor telaCadastroProfessor;
+    //private static TelaCadastroProfessor telaCadastroProfessor;
     GerenteJanelas gerenteJanelas;
     
-    public static TelaCadastroProfessor getInstancia(){
+    /*public static TelaCadastroProfessor getInstancia(){
         if(telaCadastroProfessor == null){
             telaCadastroProfessor = new TelaCadastroProfessor();
         }
         return telaCadastroProfessor;
-    }
+    }*/
     public TelaCadastroProfessor() {
         initComponents();
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);

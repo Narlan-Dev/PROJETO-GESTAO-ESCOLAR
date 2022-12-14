@@ -32,7 +32,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelBackgroud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelTelaInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -217,15 +216,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelSalaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalaMouseClicked
-        gerenteDeJanelas.abrirJanelas(TelaSalas.getInstancia());
+        gerenteDeJanelas.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jPanelSalaMouseClicked
 
     private void jPanelCadastroProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCadastroProfessorMouseClicked
-        gerenteDeJanelas.abrirJanelas(TelaCadastroProfessor.getInstancia());
+        gerenteDeJanelas.abrirJanelas(new TelaCadastroProfessor());
     }//GEN-LAST:event_jPanelCadastroProfessorMouseClicked
 
     private void jPanelCadastroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCadastroAlunoMouseClicked
-        gerenteDeJanelas.abrirJanelas(TelaCadastroAluno.getInstancia());
+        gerenteDeJanelas.abrirJanelas(new TelaCadastroAluno());
     }//GEN-LAST:event_jPanelCadastroAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked

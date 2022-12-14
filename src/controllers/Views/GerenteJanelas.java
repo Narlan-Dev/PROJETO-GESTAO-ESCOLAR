@@ -2,10 +2,10 @@ package controllers.Views;
 import javax.swing.*;
 
 public class GerenteJanelas {
-    private static JPanel jPanel;
+    private JPanel jPanel;
     
     public GerenteJanelas(JPanel jPanel){
-        GerenteJanelas.jPanel = jPanel;
+        this.jPanel = jPanel;
     }
     public void abrirJanelas(JInternalFrame jInternalFrame){
             jPanel.removeAll();

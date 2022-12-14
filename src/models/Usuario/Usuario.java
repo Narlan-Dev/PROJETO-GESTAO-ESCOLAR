@@ -4,7 +4,6 @@ public abstract class Usuario {
     private String name;
     private String matricula;
     private String passoword;
-    private String type;
     
     public String getName(){
         return this.name;
@@ -15,14 +14,10 @@ public abstract class Usuario {
     public String getPassowrd(){
         return this.passoword;
     }
-    public String getType(){
-        return this.type;
-    }
-    
-    public Usuario(String name, String matricula, String passoword, String type){
+
+    public Usuario(String name, String matricula, String passoword){
         this.name = name;
         this.matricula = matricula;
         this.passoword = passoword;
-        this.type = type;
     }
 }

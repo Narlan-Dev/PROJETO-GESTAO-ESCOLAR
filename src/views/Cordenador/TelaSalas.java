@@ -1,19 +1,25 @@
 package views.Cordenador;
 import controllers.Salas.ControllerSalas;
+import controllers.Views.GerenteJanelas;
 import controllers.Views.IconListRenderer;
 import models.Coordenador.Sala;
 
 public class TelaSalas extends javax.swing.JInternalFrame {
-    private static TelaSalas telaDasSalas;
+    //private static TelaSalas telaDasSalas;
+    GerenteJanelas infoSalas;
+    GerenteJanelas addSalas;
     
-    public static TelaSalas getInstancia(){
+    /*public static TelaSalas getInstancia(){
         if(telaDasSalas == null){
             telaDasSalas = new TelaSalas();
         }
         return telaDasSalas;
-    }
+    }*/
+    
     public TelaSalas() {
         initComponents();
+        this.infoSalas = new GerenteJanelas(jPanelInfoSalas);
+        this.addSalas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         ControllerSalas.add(new Sala("Sala 1"));
         ControllerSalas.add(new Sala("Sala 2"));
         ControllerSalas.add(new Sala("Sala 3"));
@@ -26,7 +32,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
 
         jPanelBackgroud = new javax.swing.JPanel();
         jButtonAdicionarSala = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelInfoSalas = new javax.swing.JPanel();
         AnoLetivo = new javax.swing.JScrollPane();
         jListAnoLetivo = new javax.swing.JList<>();
         backgroudCadastro = new javax.swing.JLabel();
@@ -56,20 +62,8 @@ public class TelaSalas extends javax.swing.JInternalFrame {
         });
         jPanelBackgroud.add(jButtonAdicionarSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, 180, 60));
 
-        jPanel1.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
-
-        jPanelBackgroud.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 350, 570));
+        jPanelInfoSalas.setOpaque(false);
+        jPanelBackgroud.add(jPanelInfoSalas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 350, 570));
 
         AnoLetivo.setBorder(null);
         AnoLetivo.setColumnHeaderView(null);
@@ -100,7 +94,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAdicionarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarSalaActionPerformed
-
+        addSalas.abrirJanelas(new TelaAddSalas());
     }//GEN-LAST:event_jButtonAdicionarSalaActionPerformed
 
 
@@ -109,7 +103,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel backgroudCadastro;
     private javax.swing.JButton jButtonAdicionarSala;
     private javax.swing.JList<String> jListAnoLetivo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBackgroud;
+    private javax.swing.JPanel jPanelInfoSalas;
     // End of variables declaration//GEN-END:variables
 }
