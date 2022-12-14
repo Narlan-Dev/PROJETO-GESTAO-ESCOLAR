@@ -114,10 +114,14 @@ public class TelaSalas extends javax.swing.JInternalFrame {
 
     private void jListAnoLetivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAnoLetivoMouseClicked
         //DefaultListModel<E> = (DefaultListModel) jListAnoLetivo.getModel();
-        String data = jListAnoLetivo.getSelectedValue();
-        Sala sala = ControllerSalas.shearchByName(data);
-        infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
+        try {
+            String data = jListAnoLetivo.getSelectedValue();
+            Sala sala = ControllerSalas.shearchByName(data);
+            infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
         //jLabelText.setText(sala.getName());
+        } catch (Exception e) {
+            //Exception Empty list
+        }
     }//GEN-LAST:event_jListAnoLetivoMouseClicked
 
    
