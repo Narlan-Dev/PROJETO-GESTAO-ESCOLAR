@@ -398,8 +398,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             }
         }
         
-        zerarCampos();
-        
+        zerarCampos();   
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
 
     private void zerarCampos(){
