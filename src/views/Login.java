@@ -40,7 +40,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLogin.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
         jTextFieldLogin.setToolTipText("");
         jTextFieldLogin.setBorder(null);
