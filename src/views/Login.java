@@ -8,6 +8,8 @@ import models.Usuario.*;
 public class Login extends javax.swing.JFrame {
     private static Login log;
     private Usuario user;
+    private Usuarios controllerUsuarios;
+    private ControllerSalas controllerSalas;
     
     public static Login getInstancia(){
         if(log == null){
@@ -18,13 +20,15 @@ public class Login extends javax.swing.JFrame {
   
     public Login() {
         initComponents();
-        
+        controllerSalas = new ControllerSalas();
+        controllerUsuarios = new Usuarios();
         /*Teste*/
-        ControllerSalas.add(new Sala("Sala 1", 21));
-        ControllerSalas.add(new Sala("Sala 2", 22));
-        ControllerSalas.add(new Sala("Sala 3", 23));
-        ControllerSalas.add(new Sala("Sala 4", 24));
-        Usuarios.add(new ADM("ADM", "1", "1"));
+        controllerSalas.add(new Sala("Sala 1", 21));
+        controllerSalas.add(new Sala("Sala 2", 22));
+        controllerSalas.add(new Sala("Sala 3", 23));
+        controllerSalas.add(new Sala("Sala 4", 24));
+        controllerUsuarios.add(new ADM("ADM", "1", "1"));
+        controllerUsuarios.add(new ADM("Narlan", "1", "2"));
     }
 
     @SuppressWarnings("unchecked")
@@ -69,8 +73,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         /* Apenas testes, mas ta funcional */
-        /*try {
-            user = Usuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
+        try {
+            user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
             if(user instanceof ADM){
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.changeApresentacaoName(user);
@@ -90,14 +94,14 @@ public class Login extends javax.swing.JFrame {
             }
             if(user instanceof Alunos){
                 //Criar as telas e as terminar classes
-            }
+            }*/
         } catch (Exception e) {
             jTextFieldLogin.setText("conta invalida");
-        }*/
-        TelaPrincipal tela = new TelaPrincipal();
+        }
+        /*TelaPrincipal tela = new TelaPrincipal();
         //tela.changeApresentacaoName(user);
         tela.show();
-        this.hide();
+        this.hide()*/;
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {

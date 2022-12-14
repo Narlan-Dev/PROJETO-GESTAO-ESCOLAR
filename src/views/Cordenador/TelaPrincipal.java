@@ -220,11 +220,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelSalaMouseClicked
 
     private void jPanelCadastroProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCadastroProfessorMouseClicked
-        gerenteDeJanelas.abrirJanelas(new TelaCadastroProfessor());
+        gerenteDeJanelas.abrirJanelas(new TelaCadastroProfessor(new TelaSalas().getListModel()));
     }//GEN-LAST:event_jPanelCadastroProfessorMouseClicked
 
     private void jPanelCadastroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelCadastroAlunoMouseClicked
-        gerenteDeJanelas.abrirJanelas(new TelaCadastroAluno());
+        gerenteDeJanelas.abrirJanelas(new TelaCadastroAluno(new TelaSalas().getListModel()));
     }//GEN-LAST:event_jPanelCadastroAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked

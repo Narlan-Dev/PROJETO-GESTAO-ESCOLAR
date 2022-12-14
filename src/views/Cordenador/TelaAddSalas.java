@@ -1,19 +1,19 @@
 package views.Cordenador;
 import controllers.Salas.ControllerSalas;
 import controllers.Views.GerenteJanelas;
-import controllers.Views.IconListRenderer;
 import controllers.Views.JTextFieldOnlyNumbers;
-import static java.util.Collections.list;
 import javax.swing.DefaultListModel;
 import models.Coordenador.Sala;
 import models.CustomExceptions.FileExistsException;
 
 public class TelaAddSalas extends javax.swing.JInternalFrame {
+    private ControllerSalas controllerSalas;
     GerenteJanelas gerenteJanela;
     DefaultListModel listModel;
     
     public TelaAddSalas(DefaultListModel list) {
         initComponents();
+        controllerSalas = new ControllerSalas();
         this.listModel = list;
         this.gerenteJanela = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCapacidadeMaxima.setDocument(new JTextFieldOnlyNumbers());
@@ -86,7 +86,7 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-            ControllerSalas.add(new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText())));
+            controllerSalas.add(new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText())));
             gerenteJanela.abrirJanelas(new TelaSalas());
         } catch (FileExistsException e) {
             //alguam impletação gráfica

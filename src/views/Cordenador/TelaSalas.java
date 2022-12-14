@@ -9,6 +9,7 @@ import models.Coordenador.Sala;
 
 public class TelaSalas extends javax.swing.JInternalFrame {
     //private static TelaSalas telaDasSalas;
+    private ControllerSalas controllerSalas;
     GerenteJanelas infoSalas;
     GerenteJanelas addSalas;
     DefaultListModel listaModel = new DefaultListModel();
@@ -22,11 +23,12 @@ public class TelaSalas extends javax.swing.JInternalFrame {
     
     public TelaSalas() {
         initComponents();
+        controllerSalas = new ControllerSalas();
         this.infoSalas = new GerenteJanelas(jPanelInfoSalas);
         this.addSalas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jListAnoLetivo.setModel(listaModel);
-        ControllerSalas.updateAllList(listaModel);
-        jListAnoLetivo.setCellRenderer(new IconListRenderer(ControllerSalas.getMap()));
+        controllerSalas.updateAllList(listaModel);
+        jListAnoLetivo.setCellRenderer(new IconListRenderer(controllerSalas.getMap()));
     }
 
     @SuppressWarnings("unchecked")
@@ -116,14 +118,16 @@ public class TelaSalas extends javax.swing.JInternalFrame {
         //DefaultListModel<E> = (DefaultListModel) jListAnoLetivo.getModel();
         try {
             String data = jListAnoLetivo.getSelectedValue();
-            Sala sala = ControllerSalas.shearchByName(data);
+            Sala sala = controllerSalas.shearchByName(data);
             infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
             //jLabelText.setText(sala.getName());
         } catch (Exception e) {
             //Exception Empty list
         }
     }//GEN-LAST:event_jListAnoLetivoMouseClicked
-
+    public DefaultListModel getListModel(){
+        return this.listaModel;
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnoLetivo;

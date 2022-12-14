@@ -16,6 +16,9 @@ public class Sala {
     public int getCapacidadeMax(){
         return this.capacidadeMax;
     }
+    public void setName(String name){
+        this.nome = name;
+    }
     public void setCapacidadeMax(int newValor){
         this.capacidadeMax = newValor;
     }

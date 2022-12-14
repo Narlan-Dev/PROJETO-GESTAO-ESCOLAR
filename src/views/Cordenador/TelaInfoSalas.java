@@ -1,17 +1,24 @@
 package views.Cordenador;
+import controllers.Salas.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
 import models.Coordenador.Sala;
 
 public class TelaInfoSalas extends javax.swing.JInternalFrame {
+    private ControllerSalas controllerSalas;
     GerenteJanelas gerenteJanela;
-    DefaultListModel listModel = new DefaultListModel();
+    DefaultListModel listModel;
+    Sala sala;
     
     public TelaInfoSalas(Sala sala, DefaultListModel list) {
         initComponents();
+        controllerSalas = new ControllerSalas();
+        this.sala = sala;
+        this.listModel = list;
+        gerenteJanela = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
-        jListAlunos.setModel(listModel);
+        //jListAlunos.setModel(listModel);
         jTextFieldCapacidadeMaxima.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldNomeSala.setText(sala.getName());
         jTextFieldCapacidadeMaxima.setText(Integer.toString(sala.getCapacidadeMax()));
@@ -109,11 +116,13 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        // TODO add your handling code here:
+        controllerSalas.delete(sala);
+        gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        // TODO add your handling code here:
+        controllerSalas.update(sala, jTextFieldNomeSala.getText(), jTextFieldCapacidadeMaxima.getText());
+        gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jListAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAlunosMouseClicked

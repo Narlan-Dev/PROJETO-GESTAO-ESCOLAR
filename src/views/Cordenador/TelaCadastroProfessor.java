@@ -2,6 +2,7 @@ package views.Cordenador;
 import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.*;
@@ -10,6 +11,7 @@ import models.Registros.Contatos.*;
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;
     GerenteJanelas gerenteJanelas;
+    DefaultListModel listaSalasModel = new DefaultListModel();
     
     /*public static TelaCadastroProfessor getInstancia(){
         if(telaCadastroProfessor == null){
@@ -17,13 +19,15 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         }
         return telaCadastroProfessor;
     }*/
-    public TelaCadastroProfessor() {
+    public TelaCadastroProfessor(DefaultListModel listSalasModel) {
         initComponents();
+        this.listaSalasModel = listSalasModel;
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCEP.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldCPF.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldNumero.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldTelefone.setDocument(new JTextFieldOnlyNumbers());
+        jListAnoLetivo.setModel(listSalasModel);
     }
 
     @SuppressWarnings("unchecked")
