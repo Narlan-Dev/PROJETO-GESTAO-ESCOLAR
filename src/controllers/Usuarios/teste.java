@@ -10,7 +10,6 @@ package controllers.Usuarios;
  */
 public class teste {
     public static void main(String [] args){
-        Deserializer des = new Serializer();
-        
+        //Deserializer des = new Serializer();  
     }
 }

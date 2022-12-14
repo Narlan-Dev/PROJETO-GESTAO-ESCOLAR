@@ -4,7 +4,7 @@ import models.Registros.Contatos.Contatos;
 
 
 @SuppressWarnings("unused")
-public class Alunos implements Registro<Alunos>{
+public class Alunos implements Registro{
 
     private String nomeCompleto;
     private String cadastroPessoaFisica;

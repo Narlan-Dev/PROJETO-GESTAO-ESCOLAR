@@ -20,12 +20,11 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         
         /*Teste*/
-        ControllerSalas.add(new Sala("Sala 1"));
-        ControllerSalas.add(new Sala("Sala 2"));
-        ControllerSalas.add(new Sala("Sala 3"));
-        ControllerSalas.add(new Sala("Sala 4"));
+        ControllerSalas.add(new Sala("Sala 1", 21));
+        ControllerSalas.add(new Sala("Sala 2", 22));
+        ControllerSalas.add(new Sala("Sala 3", 23));
+        ControllerSalas.add(new Sala("Sala 4", 24));
         Usuarios.add(new ADM("ADM", "1", "1"));
-        //Usuarios.add(new ADM("Narlan", "A2020102835", "123"));
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLogin.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
         jTextFieldLogin.setToolTipText("");
         jTextFieldLogin.setBorder(null);
