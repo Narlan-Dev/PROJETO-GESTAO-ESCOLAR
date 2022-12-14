@@ -1,24 +1,17 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
 import controllers.Views.GerenteJanelas;
-import controllers.Views.IconListRenderer;
 import controllers.Views.JTextFieldOnlyNumbers;
-import static java.util.Collections.list;
-import javax.swing.DefaultListModel;
-import models.Coordenador.Sala;
-import models.CustomExceptions.FileExistsException;
 
 public class TelaAddSalas extends javax.swing.JInternalFrame {
     GerenteJanelas gerenteJanela;
-    DefaultListModel listModel;
     
-    public TelaAddSalas(DefaultListModel list) {
+    public TelaAddSalas() {
         initComponents();
-        this.listModel = list;
+        //((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null); //Tira barra de titulo
         this.gerenteJanela = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCapacidadeMaxima.setDocument(new JTextFieldOnlyNumbers());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,7 +34,7 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
 
         jTextFieldCapacidadeMaxima.setBackground(new java.awt.Color(241, 242, 244));
         jTextFieldCapacidadeMaxima.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTextFieldCapacidadeMaxima.setForeground(new java.awt.Color(24, 33, 53));
+        jTextFieldCapacidadeMaxima.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCapacidadeMaxima.setToolTipText("");
         jTextFieldCapacidadeMaxima.setBorder(null);
         jTextFieldCapacidadeMaxima.setOpaque(false);
@@ -49,7 +42,7 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
 
         jTextFieldNomeSala.setBackground(new java.awt.Color(241, 242, 244));
         jTextFieldNomeSala.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTextFieldNomeSala.setForeground(new java.awt.Color(24, 33, 53));
+        jTextFieldNomeSala.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNomeSala.setToolTipText("");
         jTextFieldNomeSala.setBorder(null);
         jPanelAddSala.add(jTextFieldNomeSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 250, 770, 28));
@@ -85,16 +78,11 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        try {
-            ControllerSalas.add(new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText())));
-            gerenteJanela.abrirJanelas(new TelaSalas());
-        } catch (FileExistsException e) {
-            //alguam impletação gráfica
-        }
+        //implementar o codigo
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarActionPerformed
-        gerenteJanela.abrirJanelas(new TelaSalas());
+            gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonRetornarActionPerformed
 
 

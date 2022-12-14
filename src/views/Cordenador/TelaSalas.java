@@ -109,7 +109,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
     //DefaultListModel m = new DefaultListModel();
     
     private void jButtonAdicionarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarSalaActionPerformed
-        addSalas.abrirJanelas(new TelaAddSalas(listaModel));
+        addSalas.abrirJanelas(new TelaAddSalas());
     }//GEN-LAST:event_jButtonAdicionarSalaActionPerformed
 
     private void jListAnoLetivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAnoLetivoMouseClicked
@@ -118,7 +118,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
             String data = jListAnoLetivo.getSelectedValue();
             Sala sala = ControllerSalas.shearchByName(data);
             infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
-            //jLabelText.setText(sala.getName());
+        //jLabelText.setText(sala.getName());
         } catch (Exception e) {
             //Exception Empty list
         }
