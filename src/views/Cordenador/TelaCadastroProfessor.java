@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.*;
 import models.Registros.Contatos.*;
-import static models.Registros.Contatos.ContatosEnumeration.TELEFONE;
-
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;
@@ -378,35 +376,57 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
 
         Serializer<Professores> serializer = new Serializer<>();
         
-        Professores professor = new Professores();
-        professor.setCadastroPessoaFisica(jTextFieldCPF.getText());
         Contatos contatos = new Contatos();
         
         contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
         contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-        professor.setContatos(contatos);
-        professor.setEndereco("endereço generico");
-        professor.setSenha(new String(jPasswordField1.getPassword()));
-        professor.setNome(jTextFieldNomeCompleto.getText()); 
+        
+        Professores professor = new Professores(
+                jTextFieldNomeCompleto.getText(),
+                new String(jPasswordField1.getPassword()),
+                jTextFieldCPF.getText(),
+                contatos,
+                getAddress()
+        );
         
         try{
             serializer.serializeObject(professor);
+            zerarCampos();
         } catch (FileExistsException e){
             int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
             if (OPTION == JOptionPane.OK_OPTION){
                 serializer.serializeObject(professor, true);
+                zerarCampos();
             }
         }
-        
-        zerarCampos();   
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
 
+    private Endereco getAddress(){
+        return new Endereco(
+                jTextFieldUF.getText(),
+                jTextFieldCEP.getText(),
+                jTextFieldCidade.getText(),
+                jTextFieldLogradouro.getText(),
+                jTextFieldNumero.getText(),
+                jTextFieldBairro.getText(),
+                jTextFieldComplemento.getText()
+        );
+    }
+    
+    
     private void zerarCampos(){
         jTextFieldEmail.setText("");
         jTextFieldNomeCompleto.setText("");
         jTextFieldCPF.setText("");
-        jPasswordField1.setText("");
         jTextFieldTelefone.setText("");
+        jTextFieldUF.setText("");
+        jTextFieldCEP.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldLogradouro.setText("");
+        jTextFieldNumero.setText("");
+        jTextFieldBairro.setText("");
+        jTextFieldComplemento.setText("");
+        jPasswordField1.setText("");
     }
     
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

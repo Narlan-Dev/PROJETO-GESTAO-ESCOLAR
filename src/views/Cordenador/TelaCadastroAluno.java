@@ -1,6 +1,14 @@
 package views.Cordenador;
+import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import javax.swing.JOptionPane;
+import models.CustomExceptions.FileExistsException;
+import models.Registros.Alunos;
+import models.Registros.Contatos.Contato;
+import models.Registros.Contatos.Contatos;
+import models.Registros.Contatos.ContatosEnumeration;
+import models.Registros.Endereco;
 
 public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     //private static TelaCadastroAluno telaCadastroAluno;
@@ -66,7 +74,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         setForeground(new java.awt.Color(0, 0, 255));
         setMaximizable(true);
         setResizable(true);
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1050, 790));
         setRequestFocusEnabled(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -232,90 +239,82 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jTextFieldCidade.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCidade.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCidade.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCidade.setToolTipText("");
         jTextFieldCidade.setBorder(null);
         jPanelBackgroud1.add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 330, 20));
 
         jTextFieldUF.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldUF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldUF.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldUF.setToolTipText("");
         jTextFieldUF.setBorder(null);
         jPanelBackgroud1.add(jTextFieldUF, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 100, 20));
 
         jTextFieldLogradouro.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldLogradouro.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldLogradouro.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLogradouro.setToolTipText("");
         jTextFieldLogradouro.setBorder(null);
         jPanelBackgroud1.add(jTextFieldLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 320, 30));
 
         jTextFieldNumero.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldNumero.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldNumero.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNumero.setToolTipText("");
         jTextFieldNumero.setBorder(null);
         jPanelBackgroud1.add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 100, 30));
 
         jTextFieldBairro.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldBairro.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldBairro.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldBairro.setToolTipText("");
         jTextFieldBairro.setBorder(null);
         jPanelBackgroud1.add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 210, 20));
 
         jTextFieldComplemento.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldComplemento.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldComplemento.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldComplemento.setToolTipText("");
         jTextFieldComplemento.setBorder(null);
         jPanelBackgroud1.add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 210, 20));
 
         jTextFieldNomeCompleto.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldNomeCompleto.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldNomeCompleto.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNomeCompleto.setToolTipText("");
         jTextFieldNomeCompleto.setBorder(null);
         jPanelBackgroud1.add(jTextFieldNomeCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 450, 30));
 
         jTextFieldEmail.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldEmail.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldEmail.setToolTipText("");
         jTextFieldEmail.setBorder(null);
         jPanelBackgroud1.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 450, 20));
 
         jTextFieldResponsaveis.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldResponsaveis.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldResponsaveis.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldResponsaveis.setToolTipText("");
         jTextFieldResponsaveis.setBorder(null);
         jPanelBackgroud1.add(jTextFieldResponsaveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 450, 30));
 
         jTextFieldTelefone.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldTelefone.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldTelefone.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTelefone.setToolTipText("");
         jTextFieldTelefone.setBorder(null);
         jPanelBackgroud1.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, 210, 20));
 
         jTextFieldCPF.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCPF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCPF.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCPF.setToolTipText("");
         jTextFieldCPF.setBorder(null);
+        jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCPFActionPerformed(evt);
+            }
+        });
         jPanelBackgroud1.add(jTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 20));
 
         jTextFieldCEP.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCEP.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCEP.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCEP.setToolTipText("");
         jTextFieldCEP.setBorder(null);
         jPanelBackgroud1.add(jTextFieldCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 450, 30));
 
         backgroudCadastro.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        backgroudCadastro.setForeground(new java.awt.Color(0, 0, 0));
         backgroudCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Cordenador/Resources/CadastroProfessor.png"))); // NOI18N
         jPanelBackgroud1.add(backgroudCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1050, 758));
 
@@ -325,12 +324,68 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
-
+        Serializer<Alunos> serializer = new Serializer<>();
+        
+        Contatos contatos = new Contatos();
+        
+        contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+        contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+        
+        
+        Alunos aluno = new Alunos(
+                jTextFieldNomeCompleto.getText(),
+                jTextFieldCPF.getText(),
+                getAddress(),
+                jTextFieldResponsaveis.getText(),
+                contatos
+        );
+        
+        try{
+            serializer.serializeObject(aluno);
+        } catch (FileExistsException e){
+            int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
+            if (OPTION == JOptionPane.OK_OPTION){
+                serializer.serializeObject(aluno, true);
+            }
+        }        
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
+                                                    
 
+    private void zerarCampos(){
+        jTextFieldEmail.setText("");
+        jTextFieldNomeCompleto.setText("");
+        jTextFieldCPF.setText("");
+        jTextFieldTelefone.setText("");
+        jTextFieldUF.setText("");
+        jTextFieldCEP.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldLogradouro.setText("");
+        jTextFieldNumero.setText("");
+        jTextFieldBairro.setText("");
+        jTextFieldComplemento.setText("");
+    }
+    
+    
+    private Endereco getAddress(){
+        return new Endereco(
+                jTextFieldUF.getText(),
+                jTextFieldCEP.getText(),
+                jTextFieldCidade.getText(),
+                jTextFieldLogradouro.getText(),
+                jTextFieldNumero.getText(),
+                jTextFieldBairro.getText(),
+                jTextFieldComplemento.getText()
+        );
+    }
+    
+    
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         gerenteJanelas.abrirJanelas(TelaInicial.getInstancia());
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

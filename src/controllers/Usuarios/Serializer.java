@@ -17,7 +17,7 @@ public class Serializer <T extends Registro> {
     
     public void serializeObject(T objeto, boolean force){
         try {
-            FileOutputStream fos = new FileOutputStream(objeto.getPath());
+            FileOutputStream fos = new FileOutputStream(objeto.getPathName());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(objeto);
             oos.close();
@@ -27,11 +27,11 @@ public class Serializer <T extends Registro> {
     }
     
     public void serializeObject(T objeto){
-        if(checkIfFileExists(objeto.getPath())){
+        if(checkIfFileExists(objeto.getPathName())){
             throw new FileExistsException();
         }
         try {
-            FileOutputStream fos = new FileOutputStream(objeto.getPath());
+            FileOutputStream fos = new FileOutputStream(objeto.getPathName());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(objeto);
             oos.close();

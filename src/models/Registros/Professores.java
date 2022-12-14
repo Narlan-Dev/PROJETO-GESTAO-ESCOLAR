@@ -1,40 +1,40 @@
 package models.Registros;
 
-import controllers.Usuarios.Serializer;
 import models.Registros.Contatos.Contatos;
 
 import java.io.File;
-import models.Registros.Contatos.Contato;
-import models.Registros.Contatos.ContatosEnumeration;
 
 @SuppressWarnings("unused")
-public class Professores implements Registro<Professores>{
-
+public class Professores implements Registro{
+    
     private String nome;
     private String senha;
     private String cadastroPessoaFisica;
-    private String endereco;
+    private Endereco endereco;
     private Contatos contatos;
     
     public Professores() {
     }
 
-    public Professores(String nome, String senha, String cadastroPessoaFisica, Contatos contatos) {
+    public Professores(String nome,
+            String senha,
+            String cadastroPessoaFisica,
+            Contatos contatos,
+            Endereco endereco) {
         this.nome = nome;
+        this.endereco = endereco;
         this.senha = senha;
         this.cadastroPessoaFisica = cadastroPessoaFisica;
         this.contatos = contatos;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    
 
     public String getNome() {
         return nome;
@@ -80,7 +80,12 @@ public class Professores implements Registro<Professores>{
 
     @Override
     public String getPath() {
-        return "data/professores/" + this.cadastroPessoaFisica;
+        return RegistroEnumeration.PROFESSORES.directoryPath;
+    }
+
+    @Override
+    public String getPathName() {
+        return RegistroEnumeration.PROFESSORES.directoryPath + this.cadastroPessoaFisica;
     }
     
 }
