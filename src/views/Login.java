@@ -20,12 +20,12 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         
         /*Teste*/
-        Usuarios.add(new ADM("ADM", "A2020102834", "123"));
-        Usuarios.add(new ADM("Narlan", "A2020102835", "123"));
         ControllerSalas.add(new Sala("Sala 1"));
         ControllerSalas.add(new Sala("Sala 2"));
         ControllerSalas.add(new Sala("Sala 3"));
         ControllerSalas.add(new Sala("Sala 4"));
+        Usuarios.add(new ADM("ADM", "1", "1"));
+        //Usuarios.add(new ADM("Narlan", "A2020102835", "123"));
     }
 
     @SuppressWarnings("unchecked")

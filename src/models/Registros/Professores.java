@@ -1,6 +1,6 @@
 package models.Registros;
 
-import models.Contatos.Contatos;
+import models.Registros.Contatos.Contatos;
 
 public class Professores implements Registro{
 
@@ -52,7 +52,7 @@ public class Professores implements Registro{
     }
 
     @Override
-    public Object getSerialized() {
-        return null;
+    public String getIdentificador() {
+        return this.cadastroPessoaFisica;
     }
 }

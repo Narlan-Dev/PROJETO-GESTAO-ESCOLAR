@@ -9,5 +9,5 @@ import java.io.Serializable;
 
 @SuppressWarnings("unused")
 public interface Registro <T> extends Serializable {
-    public T getSerialized();
+    public String getIdentificador();
 }

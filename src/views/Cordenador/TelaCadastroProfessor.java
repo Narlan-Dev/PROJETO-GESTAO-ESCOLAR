@@ -1,7 +1,11 @@
 package views.Cordenador;
+import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
-import models.Contatos.*;
+import models.Registros.*;
+import models.Registros.Contatos.*;
+import static models.Registros.Contatos.ContatosEnumeration.TELEFONE;
+
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;
@@ -369,6 +373,19 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
+
+        Professores professor = new Professores();
+        professor.setCadastroPessoaFisica(jTextFieldCPF.getText());
+        Contatos contatos = new Contatos();
+        
+        contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+        contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+        professor.setContatos(contatos);
+        professor.setNome(jTextFieldNomeCompleto.getText());
+        professor.setCadastroPessoaFisica(jTextFieldCPF.getText());
+        
+        Serializer<Professores> serializer = new Serializer<>();
+        serializer.serializeObject(professor);
         
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
 
