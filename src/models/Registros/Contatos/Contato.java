@@ -3,9 +3,10 @@ package models.Registros.Contatos;
 import models.Registros.Registro;
 
 import java.io.Serial;
+import java.io.Serializable;
 
 @SuppressWarnings("unused")
-public class Contato implements Registro{
+public class Contato implements Serializable{
 
     @Serial
     private static final long serialVersionUID = 0L;
@@ -52,7 +53,6 @@ public class Contato implements Registro{
         return null;
     }
 
-    @Override
     public String getIdentificador() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

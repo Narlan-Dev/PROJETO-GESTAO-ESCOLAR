@@ -1,6 +1,8 @@
 package models.Registros;
 
-public class Turma implements Registro{
+import java.io.Serializable;
+
+public class Turma implements Serializable{
     private String id;
     private String sala;
     private String ano;
@@ -42,7 +44,6 @@ public class Turma implements Registro{
         return null;
     }
 
-    @Override
     public String getIdentificador() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

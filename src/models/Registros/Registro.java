@@ -10,4 +10,5 @@ import java.io.Serializable;
 @SuppressWarnings("unused")
 public interface Registro <T> extends Serializable {
     public String getIdentificador();
+    public String getPath();
 }

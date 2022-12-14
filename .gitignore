@@ -5,3 +5,7 @@
 /src/out/
 /ProjetoGestao/build/
 /build/
+nbproject/private/private.properties
+PROJETO-GESTAO-ESCOLAR.iml
+/dist/
+/data/**

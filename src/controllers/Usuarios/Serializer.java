@@ -5,24 +5,36 @@
 package controllers.Usuarios;
 
 import java.io.*;
-import models.Registros.Alunos;
-import models.Registros.Contatos.Contato;
-import models.Registros.Contatos.Contatos;
-import models.Registros.Contatos.ContatosEnumeration;
+import models.CustomExceptions.FileExistsException;
 import models.Registros.Registro;
 
 public class Serializer <T extends Registro> {
-    public boolean serializeObject(T objeto){
+    
+    private boolean checkIfFileExists(String fileName){
+        File file = new File(fileName);
+        return (file.exists());
+    }
+    
+    public void serializeObject(T objeto, boolean force){
         try {
-            System.out.println("ok");
-            FileOutputStream fos = new FileOutputStream("asaa");
-            System.out.println("ok");
+            FileOutputStream fos = new FileOutputStream(objeto.getPath());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            System.out.println("ok");
             oos.writeObject(objeto);
-            System.out.println("ok");
             oos.close();
-            return true;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void serializeObject(T objeto){
+        if(checkIfFileExists(objeto.getPath())){
+            throw new FileExistsException();
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(objeto.getPath());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(objeto);
+            oos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,6 +1,8 @@
 package models.Registros;
 
-public class Disciplina implements Registro{
+import java.io.Serializable;
+
+public class Disciplina implements Serializable{
     private String id;
     private String idSala;
     private String nome;
@@ -47,7 +49,6 @@ public class Disciplina implements Registro{
         return null;
     }
 
-    @Override
     public String getIdentificador() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

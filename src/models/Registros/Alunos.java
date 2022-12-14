@@ -4,7 +4,7 @@ import models.Registros.Contatos.Contatos;
 
 
 @SuppressWarnings("unused")
-public class Alunos implements Registro{
+public class Alunos implements Registro<Alunos>{
 
     private String nomeCompleto;
     private String cadastroPessoaFisica;
@@ -37,5 +37,10 @@ public class Alunos implements Registro{
     @Override
     public String getIdentificador() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getPath() {
+        return "data/alunos/" + this.cadastroPessoaFisica;
     }
 }

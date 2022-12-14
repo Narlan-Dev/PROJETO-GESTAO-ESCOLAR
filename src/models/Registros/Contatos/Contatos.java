@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 
 @SuppressWarnings("unused")
-public class Contatos implements Registro {
+public class Contatos implements Serializable {
 
     private HashSet<Contato> contatos;
 
@@ -63,7 +63,6 @@ public class Contatos implements Registro {
         return null;
     }
 
-    @Override
     public String getIdentificador() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
