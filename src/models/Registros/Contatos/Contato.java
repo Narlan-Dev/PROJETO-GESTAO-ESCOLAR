@@ -1,16 +1,37 @@
-package models.Contatos;
+package models.Registros.Contatos;
 
 import models.Registros.Registro;
 
 import java.io.Serial;
 
 @SuppressWarnings("unused")
-class Contato implements Registro{
+public class Contato implements Registro{
 
     @Serial
     private static final long serialVersionUID = 0L;
     private ContatosEnumeration tipoContato;
     private String contato;
+    
+    public Contato(ContatosEnumeration tipoContato, String contato){
+        this.tipoContato = tipoContato;
+        this.contato = contato;
+    }
+
+    public ContatosEnumeration getTipoContato() {
+        return tipoContato;
+    }
+
+    public void setTipoContato(ContatosEnumeration tipoContato) {
+        this.tipoContato = tipoContato;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
 
     @Override
     public boolean equals(Object obj) {

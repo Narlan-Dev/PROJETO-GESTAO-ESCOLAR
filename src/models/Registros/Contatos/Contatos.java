@@ -1,4 +1,4 @@
-package models.Contatos;
+package models.Registros.Contatos;
 
 import models.CustomExceptions.ContatoNotFoundException;
 import models.Registros.Registro;

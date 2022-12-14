@@ -1,6 +1,6 @@
 package models.Registros;
 
-import models.Contatos.Contatos;
+import models.Registros.Contatos.Contatos;
 
 
 @SuppressWarnings("unused")
@@ -8,6 +8,7 @@ public class Alunos implements Registro{
 
     private String nomeCompleto;
     private String cadastroPessoaFisica;
+    private String endereco;
     private Contatos contatos;
 
     public Alunos(){}
@@ -21,7 +22,7 @@ public class Alunos implements Registro{
         this.cadastroPessoaFisica = cadastroPessoaFisica;
     }
 
-    public void parseContatos(Contatos contatos){
+    public void setContatos(Contatos contatos){
         this.contatos = contatos;
     }
 

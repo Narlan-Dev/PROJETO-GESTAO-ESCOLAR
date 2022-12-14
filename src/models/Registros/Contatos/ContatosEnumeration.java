@@ -1,6 +1,5 @@
-package models.Contatos;
+package models.Registros.Contatos;
 
-@SuppressWarnings("unused")
 public enum ContatosEnumeration {
 
     TELEFONE("Telefone"),
