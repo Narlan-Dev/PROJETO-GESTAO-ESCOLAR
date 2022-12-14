@@ -5,11 +5,16 @@ import javax.swing.DefaultListModel;
 import models.Coordenador.Sala;
 
 public class TelaInfoSalas extends javax.swing.JInternalFrame {
-    //GerenteJanelas gerenteJanela;
+    GerenteJanelas gerenteJanela;
+    DefaultListModel listModel = new DefaultListModel();
     
     public TelaInfoSalas(Sala sala, DefaultListModel list) {
         initComponents();
-        jLabel1.setText(sala.getName());
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        jListAlunos.setModel(listModel);
+        jTextFieldCapacidadeMaxima.setDocument(new JTextFieldOnlyNumbers());
+        jTextFieldNomeSala.setText(sala.getName());
+        jTextFieldCapacidadeMaxima.setText(Integer.toString(sala.getCapacidadeMax()));
     }
 
     @SuppressWarnings("unchecked")
@@ -17,64 +22,121 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanelAddSala = new javax.swing.JPanel();
-        jButtonRetornar = new javax.swing.JButton();
-        jButtonSalvar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Alunos = new javax.swing.JScrollPane();
+        jListAlunos = new javax.swing.JList<>();
+        jButtonDeletar = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jTextFieldNomeSala = new javax.swing.JTextField();
+        jTextFieldCapacidadeMaxima = new javax.swing.JTextField();
+        jLabelBackgroud = new javax.swing.JLabel();
 
         setBorder(null);
         setMaximizable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelAddSala.setBackground(new java.awt.Color(231, 239, 248));
-        jPanelAddSala.setForeground(new java.awt.Color(231, 239, 248));
+        jPanelAddSala.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAddSala.setForeground(new java.awt.Color(255, 255, 255));
         jPanelAddSala.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonRetornar.setBorder(null);
-        jButtonRetornar.setContentAreaFilled(false);
-        jButtonRetornar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRetornar.setOpaque(true);
-        jButtonRetornar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRetornarActionPerformed(evt);
+        Alunos.setBorder(null);
+        Alunos.setColumnHeaderView(null);
+        Alunos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jListAlunos.setBackground(new java.awt.Color(241, 242, 244));
+        jListAlunos.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jListAlunos.setForeground(new java.awt.Color(24, 33, 53));
+        jListAlunos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Aluno 1", "Aluno 2", "Aluno 3" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jListAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jListAlunos.setSelectionBackground(new java.awt.Color(83, 116, 239));
+        jListAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListAlunosMouseClicked(evt);
             }
         });
-        jPanelAddSala.add(jButtonRetornar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 90, 90));
+        Alunos.setViewportView(jListAlunos);
 
-        jButtonSalvar.setBorder(null);
-        jButtonSalvar.setContentAreaFilled(false);
-        jButtonSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSalvar.setOpaque(true);
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jPanelAddSala.add(Alunos, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 178, 321, 272));
+
+        jButtonDeletar.setBorder(null);
+        jButtonDeletar.setContentAreaFilled(false);
+        jButtonDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
+                jButtonDeletarActionPerformed(evt);
             }
         });
-        jPanelAddSala.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 100, 90));
+        jPanelAddSala.add(jButtonDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 160, 40));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("jLabel1");
-        jPanelAddSala.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 120, 50));
+        jButtonEditar.setBorder(null);
+        jButtonEditar.setContentAreaFilled(false);
+        jButtonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+        jPanelAddSala.add(jButtonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 150, 40));
 
-        getContentPane().add(jPanelAddSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 520));
+        jTextFieldNomeSala.setBackground(new java.awt.Color(241, 242, 244));
+        jTextFieldNomeSala.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jTextFieldNomeSala.setForeground(new java.awt.Color(24, 33, 53));
+        jTextFieldNomeSala.setToolTipText("");
+        jTextFieldNomeSala.setBorder(null);
+        jTextFieldNomeSala.setOpaque(false);
+        jPanelAddSala.add(jTextFieldNomeSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 55, 320, 20));
+
+        jTextFieldCapacidadeMaxima.setBackground(new java.awt.Color(241, 242, 244));
+        jTextFieldCapacidadeMaxima.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jTextFieldCapacidadeMaxima.setForeground(new java.awt.Color(24, 33, 53));
+        jTextFieldCapacidadeMaxima.setToolTipText("");
+        jTextFieldCapacidadeMaxima.setBorder(null);
+        jTextFieldCapacidadeMaxima.setOpaque(false);
+        jPanelAddSala.add(jTextFieldCapacidadeMaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 118, 80, 20));
+
+        jLabelBackgroud.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelBackgroud.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelBackgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Cordenador/Resources/TelaInfoSala.png"))); // NOI18N
+        jPanelAddSala.add(jLabelBackgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 360, 540));
+
+        getContentPane().add(jPanelAddSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        //implementar o codigo
-    }//GEN-LAST:event_jButtonSalvarActionPerformed
+    private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeletarActionPerformed
 
-    private void jButtonRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarActionPerformed
-        //implementar o codigo
-    }//GEN-LAST:event_jButtonRetornarActionPerformed
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jListAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAlunosMouseClicked
+        //DefaultListModel<E> = (DefaultListModel) jListAnoLetivo.getModel();
+        /*try {
+            String data = jListAnoLetivo.getSelectedValue();
+            Sala sala = ControllerSalas.shearchByName(data);
+            infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
+            //jLabelText.setText(sala.getName());
+        } catch (Exception e) {
+            //Exception Empty list
+        }*/
+    }//GEN-LAST:event_jListAlunosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRetornar;
-    private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane Alunos;
+    private javax.swing.JButton jButtonDeletar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JLabel jLabelBackgroud;
+    private javax.swing.JList<String> jListAlunos;
     private javax.swing.JPanel jPanelAddSala;
+    private javax.swing.JTextField jTextFieldCapacidadeMaxima;
+    private javax.swing.JTextField jTextFieldNomeSala;
     // End of variables declaration//GEN-END:variables
 }
