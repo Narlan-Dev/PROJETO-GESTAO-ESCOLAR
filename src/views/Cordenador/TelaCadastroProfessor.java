@@ -1,6 +1,7 @@
 package views.Cordenador;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import models.Contatos.*;
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;

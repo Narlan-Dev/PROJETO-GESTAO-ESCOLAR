@@ -228,7 +228,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelCadastroAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked
-        new Login().show();
+        Login.getInstancia().show();
         this.dispose();
     }//GEN-LAST:event_jPanelDeslogarMouseClicked
 

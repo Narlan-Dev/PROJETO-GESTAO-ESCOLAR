@@ -5,7 +5,7 @@ import models.Registros.Registro;
 import java.io.Serial;
 
 @SuppressWarnings("unused")
-class Contato implements Registro{
+public class Contato implements Registro{
 
     @Serial
     private static final long serialVersionUID = 0L;

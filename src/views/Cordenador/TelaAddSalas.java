@@ -82,7 +82,7 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarActionPerformed
-        gerenteJanela.abrirJanelas(new TelaSalas());
+            gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonRetornarActionPerformed
 
 

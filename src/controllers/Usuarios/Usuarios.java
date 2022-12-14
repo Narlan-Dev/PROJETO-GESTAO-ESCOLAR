@@ -16,7 +16,7 @@ public class Usuarios implements Controller{
                 return user;
             }
         }
-        return null;
+        throw new NullPointerException();
     }
         
     /*public static Map<Object, Icon> getMap(){

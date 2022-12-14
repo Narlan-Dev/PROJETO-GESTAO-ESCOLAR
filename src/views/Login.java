@@ -1,18 +1,31 @@
 package views;
+import controllers.Salas.ControllerSalas;
 import views.Cordenador.TelaPrincipal;
 import controllers.Usuarios.Usuarios;
+import models.Coordenador.Sala;
 import models.Usuario.*;
-//import models.Registros.*;
 
 public class Login extends javax.swing.JFrame {
+    private static Login log;
     private Usuario user;
     
+    public static Login getInstancia(){
+        if(log == null){
+            log = new Login();
+        }
+        return log;
+    }
+  
     public Login() {
         initComponents();
         
         /*Teste*/
         Usuarios.add(new ADM("ADM", "A2020102834", "123"));
         Usuarios.add(new ADM("Narlan", "A2020102835", "123"));
+        ControllerSalas.add(new Sala("Sala 1"));
+        ControllerSalas.add(new Sala("Sala 2"));
+        ControllerSalas.add(new Sala("Sala 3"));
+        ControllerSalas.add(new Sala("Sala 4"));
     }
 
     @SuppressWarnings("unchecked")
@@ -86,7 +99,7 @@ public class Login extends javax.swing.JFrame {
         /*TelaPrincipal tela = new TelaPrincipal();
         //tela.changeApresentacaoName(user);
         tela.show();
-        this.dispose();*/
+        this.hide();*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
@@ -111,7 +124,7 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
+            Login.getInstancia().show();
         });
     }
 
