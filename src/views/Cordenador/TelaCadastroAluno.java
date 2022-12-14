@@ -18,6 +18,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jTextFieldCEP.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldNumero.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldTelefone.setDocument(new JTextFieldOnlyNumbers());
+        jTextFieldCPF.setDocument(new JTextFieldOnlyNumbers());
     }
 
     @SuppressWarnings("unchecked")
@@ -42,7 +43,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabelNomeCompleto = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
         jLabelResponsaveis = new javax.swing.JLabel();
-        jLabelSenha = new javax.swing.JLabel();
+        jLabelCPF = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
         jLabelCEP = new javax.swing.JLabel();
         jTextFieldCidade = new javax.swing.JTextField();
@@ -55,8 +56,8 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldResponsaveis = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
+        jTextFieldCPF = new javax.swing.JTextField();
         jTextFieldCEP = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
         backgroudCadastro = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -214,10 +215,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabelResponsaveis.setText("Responsáveis *");
         jPanelBackgroud1.add(jLabelResponsaveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 80, -1));
 
-        jLabelSenha.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jLabelSenha.setForeground(new java.awt.Color(24, 33, 53));
-        jLabelSenha.setText("Senha *");
-        jPanelBackgroud1.add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 555, 50, 20));
+        jLabelCPF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        jLabelCPF.setForeground(new java.awt.Color(24, 33, 53));
+        jLabelCPF.setText("CPF ");
+        jPanelBackgroud1.add(jLabelCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 555, 50, 20));
 
         jLabelTelefone.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         jLabelTelefone.setForeground(new java.awt.Color(24, 33, 53));
@@ -299,18 +300,19 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jTextFieldTelefone.setBorder(null);
         jPanelBackgroud1.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, 210, 20));
 
+        jTextFieldCPF.setBackground(new java.awt.Color(246, 245, 245));
+        jTextFieldCPF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        jTextFieldCPF.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldCPF.setToolTipText("");
+        jTextFieldCPF.setBorder(null);
+        jPanelBackgroud1.add(jTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 20));
+
         jTextFieldCEP.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCEP.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         jTextFieldCEP.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCEP.setToolTipText("");
         jTextFieldCEP.setBorder(null);
         jPanelBackgroud1.add(jTextFieldCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 450, 30));
-
-        jPasswordField1.setBackground(new java.awt.Color(246, 245, 245));
-        jPasswordField1.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setBorder(null);
-        jPanelBackgroud1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 20));
 
         backgroudCadastro.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         backgroudCadastro.setForeground(new java.awt.Color(0, 0, 0));
@@ -339,6 +341,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelAnoLetivo;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
+    private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
     private javax.swing.JLabel jLabelEmail;
@@ -346,7 +349,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelNomeCompleto;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelResponsaveis;
-    private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelUF;
     private javax.swing.JList<String> jListAnoLetivo;
@@ -354,9 +356,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelBackgroudAnoLetivo;
     private javax.swing.JPanel jPanelLists;
     private javax.swing.JPanel jPanelTop;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCEP;
+    private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldEmail;
