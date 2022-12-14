@@ -45,14 +45,14 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
         jTextFieldCapacidadeMaxima.setToolTipText("");
         jTextFieldCapacidadeMaxima.setBorder(null);
         jTextFieldCapacidadeMaxima.setOpaque(false);
-        jPanelAddSala.add(jTextFieldCapacidadeMaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 200, 20));
+        jPanelAddSala.add(jTextFieldCapacidadeMaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 358, 200, 28));
 
         jTextFieldNomeSala.setBackground(new java.awt.Color(241, 242, 244));
         jTextFieldNomeSala.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         jTextFieldNomeSala.setForeground(new java.awt.Color(24, 33, 53));
         jTextFieldNomeSala.setToolTipText("");
         jTextFieldNomeSala.setBorder(null);
-        jPanelAddSala.add(jTextFieldNomeSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 770, 30));
+        jPanelAddSala.add(jTextFieldNomeSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 250, 770, 28));
 
         jButtonRetornar.setBorder(null);
         jButtonRetornar.setContentAreaFilled(false);
