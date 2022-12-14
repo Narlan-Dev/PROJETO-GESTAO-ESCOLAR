@@ -38,8 +38,12 @@ public class Turma implements Registro{
         this.ano = ano;
     }
 
-    @Override
     public Object getSerialized() {
         return null;
+    }
+
+    @Override
+    public String getIdentificador() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

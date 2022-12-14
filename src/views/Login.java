@@ -40,17 +40,15 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLogin.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
-        jTextFieldLogin.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLogin.setToolTipText("");
         jTextFieldLogin.setBorder(null);
+        jTextFieldLogin.setOpaque(false);
         getContentPane().add(jTextFieldLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 300, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setBorder(null);
+        jPasswordField1.setOpaque(false);
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 300, 40));
 
         jButtonEntrar.setBorder(null);
@@ -71,7 +69,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         /* Apenas testes, mas ta funcional */
-        try {
+        /*try {
             user = Usuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
             if(user instanceof ADM){
                 TelaPrincipal tela = new TelaPrincipal();
@@ -92,14 +90,14 @@ public class Login extends javax.swing.JFrame {
             }
             if(user instanceof Alunos){
                 //Criar as telas e as terminar classes
-            }*/
+            }
         } catch (Exception e) {
             jTextFieldLogin.setText("conta invalida");
-        }
-        /*TelaPrincipal tela = new TelaPrincipal();
+        }*/
+        TelaPrincipal tela = new TelaPrincipal();
         //tela.changeApresentacaoName(user);
         tela.show();
-        this.hide();*/
+        this.hide();
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
