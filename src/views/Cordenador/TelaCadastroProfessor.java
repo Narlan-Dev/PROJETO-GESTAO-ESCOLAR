@@ -409,7 +409,6 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         );
     }
     
-    
     private void zerarCampos(){
         jTextFieldEmail.setText("");
         jTextFieldNomeCompleto.setText("");

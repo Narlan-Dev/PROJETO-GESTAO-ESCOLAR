@@ -404,7 +404,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         try {
             String data = jListAnoLetivo.getSelectedValue();
             sala = controllerSalas.shearchByName(data);
-            //jLabelText.setText(sala.getName());
         } catch (Exception e) {
             //Exception Empty list
         }
