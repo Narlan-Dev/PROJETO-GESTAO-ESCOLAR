@@ -62,11 +62,7 @@ public class Alunos implements Registro{
     public Contatos getContatos(){
         return this.contatos;
     }
-    
-    public String getName(){
-        return this.nomeCompleto;
-    }
-
+   
     public String getNomeCompleto() {
         return nomeCompleto;
     }
