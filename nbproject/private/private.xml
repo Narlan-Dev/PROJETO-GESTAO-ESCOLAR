@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/views/Cordenador/TelaPrincipal.java</file>
             <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/views/Cordenador/TelaSalas.java</file>
+            <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/controllers/Salas/ControllerSalas.java</file>
             <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/views/Login.java</file>
             <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/views/Cordenador/TelaInfoSalas.java</file>
+            <file>file:/C:/Narlan/PROJETOS/PROJETO_GESTAO_ESCOLAR/src/views/Cordenador/TelaAddSalas.java</file>
         </group>
     </open-files>
 </project-private>

@@ -63,6 +63,11 @@ public class Login extends javax.swing.JFrame {
                 jButtonEntrarActionPerformed(evt);
             }
         });
+        jButtonEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonEntrarKeyPressed(evt);
+            }
+        });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 170, 50));
 
         jLabelBackgorud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/resources/LoginBackgroud.png"))); // NOI18N
@@ -101,8 +106,38 @@ public class Login extends javax.swing.JFrame {
         /*TelaPrincipal tela = new TelaPrincipal();
         //tela.changeApresentacaoName(user);
         tela.show();
-        this.hide()*/;
+        this.hide();*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            try {
+                user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
+                if(user instanceof ADM){
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.changeApresentacaoName(user);
+                    tela.show();
+                    this.dispose();
+                    //Terminar funcionalidades
+                }
+                /*if(user.getType().equals("coordenador")){
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.changeApresentacaoName(user);
+                    tela.show();
+                    this.dispose();
+                    //Terminar funcionalidades
+                }
+                if(user.getType().equals("professor")){
+                    //Criar as telas e as classes
+                }
+                if(user instanceof Alunos){
+                    //Criar as telas e as terminar classes
+                }*/
+            } catch (Exception e) {
+                jTextFieldLogin.setText("conta invalida");
+            }
+        }
+    }//GEN-LAST:event_jButtonEntrarKeyPressed
 
     public static void main(String args[]) {
 

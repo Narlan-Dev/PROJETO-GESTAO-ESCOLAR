@@ -1,15 +1,20 @@
 package views.Cordenador;
+import controllers.Salas.ControllerSalas;
 import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import models.Coordenador.Sala;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.*;
 import models.Registros.Contatos.*;
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;
+    private Map<String, Boolean> diciplinasDicionario;
+    private ControllerSalas controllerSalas;
     GerenteJanelas gerenteJanelas;
     DefaultListModel listaSalasModel = new DefaultListModel();
     
@@ -21,6 +26,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     }*/
     public TelaCadastroProfessor(DefaultListModel listSalasModel) {
         initComponents();
+        controllerSalas = new ControllerSalas();
         this.listaSalasModel = listSalasModel;
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCEP.setDocument(new JTextFieldOnlyNumbers());
@@ -79,7 +85,6 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         setForeground(new java.awt.Color(0, 0, 255));
         setMaximizable(true);
         setResizable(true);
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1050, 790));
         setRequestFocusEnabled(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,13 +177,13 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         jListAnoLetivo.setBackground(new java.awt.Color(246, 245, 245));
         jListAnoLetivo.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jListAnoLetivo.setForeground(new java.awt.Color(24, 33, 53));
-        jListAnoLetivo.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1º Ano Fundamental", "2º Ano Fundamental", "3º Ano Fundamental", "4º Ano Fundamental", "5º Ano Fundamental", "6º Ano Fundamental", "8º Ano Fundamental", "9º Ano Fundamental", "1º Ano Ensino Médio", "2º Ano Ensino Médio", "3º Ano Ensino Médio" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListAnoLetivo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListAnoLetivo.setSelectionBackground(new java.awt.Color(83, 116, 239));
+        jListAnoLetivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListAnoLetivoMouseClicked(evt);
+            }
+        });
         AnoLetivo.setViewportView(jListAnoLetivo);
 
         javax.swing.GroupLayout jPanelListsLayout = new javax.swing.GroupLayout(jPanelLists);
@@ -285,89 +290,76 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
 
         jTextFieldCidade.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCidade.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCidade.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCidade.setToolTipText("");
         jTextFieldCidade.setBorder(null);
         jPanelBackgroud.add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 330, 20));
 
         jTextFieldUF.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldUF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldUF.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldUF.setToolTipText("");
         jTextFieldUF.setBorder(null);
         jPanelBackgroud.add(jTextFieldUF, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 100, 20));
 
         jTextFieldLogradouro.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldLogradouro.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldLogradouro.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLogradouro.setToolTipText("");
         jTextFieldLogradouro.setBorder(null);
         jPanelBackgroud.add(jTextFieldLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 320, 30));
 
         jTextFieldNumero.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldNumero.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldNumero.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNumero.setToolTipText("");
         jTextFieldNumero.setBorder(null);
         jPanelBackgroud.add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 100, 30));
 
         jTextFieldBairro.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldBairro.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldBairro.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldBairro.setToolTipText("");
         jTextFieldBairro.setBorder(null);
         jPanelBackgroud.add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 210, 20));
 
         jTextFieldComplemento.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldComplemento.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldComplemento.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldComplemento.setToolTipText("");
         jTextFieldComplemento.setBorder(null);
         jPanelBackgroud.add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 210, 20));
 
         jTextFieldNomeCompleto.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldNomeCompleto.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldNomeCompleto.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNomeCompleto.setToolTipText("");
         jTextFieldNomeCompleto.setBorder(null);
         jPanelBackgroud.add(jTextFieldNomeCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 450, 30));
 
         jTextFieldEmail.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldEmail.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldEmail.setToolTipText("");
         jTextFieldEmail.setBorder(null);
         jPanelBackgroud.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 450, 20));
 
         jTextFieldCPF.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCPF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCPF.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCPF.setToolTipText("");
         jTextFieldCPF.setBorder(null);
         jPanelBackgroud.add(jTextFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 450, 30));
 
         jTextFieldTelefone.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldTelefone.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldTelefone.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTelefone.setToolTipText("");
         jTextFieldTelefone.setBorder(null);
         jPanelBackgroud.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, 210, 20));
 
         jTextFieldCEP.setBackground(new java.awt.Color(246, 245, 245));
         jTextFieldCEP.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jTextFieldCEP.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldCEP.setToolTipText("");
         jTextFieldCEP.setBorder(null);
         jPanelBackgroud.add(jTextFieldCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 450, 30));
 
         jPasswordField1.setBackground(new java.awt.Color(246, 245, 245));
         jPasswordField1.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setBorder(null);
         jPanelBackgroud.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 20));
 
         backgroudCadastro.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        backgroudCadastro.setForeground(new java.awt.Color(0, 0, 0));
         backgroudCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Cordenador/Resources/CadastroProfessor.png"))); // NOI18N
         jPanelBackgroud.add(backgroudCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1050, 758));
 
@@ -436,6 +428,25 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         gerenteJanelas.abrirJanelas(TelaInicial.getInstancia());
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jListAnoLetivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAnoLetivoMouseClicked
+        try {
+            DefaultListModel listaDiciplinaModel = new DefaultListModel();
+            listaDiciplinaModel.clear();
+            String data = jListAnoLetivo.getSelectedValue();
+            Sala sala = controllerSalas.shearchByName(data);
+            diciplinasDicionario = sala.getDiciplinaDicionario();
+            jListDiciplinas.setModel(listaDiciplinaModel);
+            for(String diciplina : diciplinasDicionario.keySet()){
+                if(!(diciplinasDicionario.get(diciplina))){
+                    listaDiciplinaModel.addElement(diciplina);
+                }
+            }
+            //jLabelText.setText(sala.getName());
+        } catch (Exception e) {
+            //Exception Empty list
+        }
+    }//GEN-LAST:event_jListAnoLetivoMouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
