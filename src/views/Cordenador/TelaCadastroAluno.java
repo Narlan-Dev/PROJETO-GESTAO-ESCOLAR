@@ -1,4 +1,5 @@
 package views.Cordenador;
+import controllers.Salas.ControllerSalas;
 import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
@@ -14,6 +15,8 @@ import models.Registros.Endereco;
 
 public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     //private static TelaCadastroAluno telaCadastroAluno;
+    private ControllerSalas controllerSalas;
+    private Sala sala;
     GerenteJanelas gerenteJanelas;
     DefaultListModel listaSalasModel = new DefaultListModel();
     
@@ -25,6 +28,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     }*/
     public TelaCadastroAluno(DefaultListModel listSalasModel) {
         initComponents();
+        controllerSalas = new ControllerSalas();
         this.listaSalasModel = listSalasModel;
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCEP.setDocument(new JTextFieldOnlyNumbers());
@@ -135,13 +139,13 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jListAnoLetivo.setBackground(new java.awt.Color(246, 245, 245));
         jListAnoLetivo.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jListAnoLetivo.setForeground(new java.awt.Color(24, 33, 53));
-        jListAnoLetivo.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1º Ano Fundamental", "2º Ano Fundamental", "3º Ano Fundamental", "4º Ano Fundamental", "5º Ano Fundamental", "6º Ano Fundamental", "8º Ano Fundamental", "9º Ano Fundamental", "1º Ano Ensino Médio", "2º Ano Ensino Médio", "3º Ano Ensino Médio" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListAnoLetivo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListAnoLetivo.setSelectionBackground(new java.awt.Color(83, 116, 239));
+        jListAnoLetivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListAnoLetivoMouseClicked(evt);
+            }
+        });
         AnoLetivo.setViewportView(jListAnoLetivo);
 
         javax.swing.GroupLayout jPanelListsLayout = new javax.swing.GroupLayout(jPanelLists);
@@ -330,32 +334,33 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
     
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
-        Serializer<Alunos> serializer = new Serializer<>();
-        Contatos contatos = new Contatos();
-        
-        contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
-        contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-        Sala sala = null;
-        
-        Alunos aluno = new Alunos(
-                jTextFieldNomeCompleto.getText(),
-                jTextFieldCPF.getText(),
-                getAddress(),
-                jTextFieldResponsaveis.getText(),
-                contatos,
-                sala
-        );
-        
-        try{
-            serializer.serializeObject(aluno);
-            zerarCampos();
-        } catch (FileExistsException e){
-            int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
-            if (OPTION == JOptionPane.OK_OPTION){
-                serializer.serializeObject(aluno, true);
+        if(jListAnoLetivo.getSelectedValue() != null){
+            Serializer<Alunos> serializer = new Serializer<>();
+            Contatos contatos = new Contatos();
+
+            contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+            contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+
+            Alunos aluno = new Alunos(
+                    jTextFieldNomeCompleto.getText(),
+                    jTextFieldCPF.getText(),
+                    getAddress(),
+                    jTextFieldResponsaveis.getText(),
+                    contatos,
+                    sala
+            );
+
+            try{
+                serializer.serializeObject(aluno);
                 zerarCampos();
+            } catch (FileExistsException e){
+                int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
+                if (OPTION == JOptionPane.OK_OPTION){
+                    serializer.serializeObject(aluno, true);
+                    zerarCampos();
+                }
             }
-        }        
+        }
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
                                                     
 
@@ -394,6 +399,16 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
+
+    private void jListAnoLetivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAnoLetivoMouseClicked
+        try {
+            String data = jListAnoLetivo.getSelectedValue();
+            sala = controllerSalas.shearchByName(data);
+            //jLabelText.setText(sala.getName());
+        } catch (Exception e) {
+            //Exception Empty list
+        }
+    }//GEN-LAST:event_jListAnoLetivoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
