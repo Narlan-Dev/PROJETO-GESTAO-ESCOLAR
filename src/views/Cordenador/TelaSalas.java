@@ -1,5 +1,5 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
+import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.IconListRenderer;
 import javax.swing.DefaultListModel;

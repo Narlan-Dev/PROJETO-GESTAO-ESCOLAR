@@ -3,6 +3,7 @@ package models.Registros;
 import models.Registros.Contatos.Contatos;
 
 import java.io.File;
+import models.Coordenador.Sala;
 
 @SuppressWarnings("unused")
 public class Professores implements Registro{
@@ -13,6 +14,8 @@ public class Professores implements Registro{
     private Endereco endereco;
     private Contatos contatos;
     private String login;
+    private Sala sala;
+    private String disciplina;
     
     public Professores() {
     }
@@ -21,7 +24,11 @@ public class Professores implements Registro{
             String senha,
             String cadastroPessoaFisica,
             Contatos contatos,
-            Endereco endereco) {
+            Endereco endereco,
+            Sala sala,
+            String disciplina) {
+        this.sala = sala;
+        this.disciplina = disciplina;
         this.nome = nome;
         this.endereco = endereco;
         this.senha = senha;
@@ -30,6 +37,10 @@ public class Professores implements Registro{
         this.login = "a" + cadastroPessoaFisica;
     }
 
+    public Sala getSala() {
+        return sala;
+    }
+    
     public Endereco getEndereco() {
         return endereco;
     }

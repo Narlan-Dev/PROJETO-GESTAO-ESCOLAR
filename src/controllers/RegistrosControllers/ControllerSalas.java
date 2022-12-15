@@ -1,4 +1,4 @@
-package controllers.Salas;
+package controllers.RegistrosControllers;
 import controllers.Controller;
 import java.util.HashMap;
 import java.util.Map;

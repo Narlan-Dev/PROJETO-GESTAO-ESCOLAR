@@ -1,7 +1,7 @@
 package views;
-import controllers.Salas.ControllerSalas;
+import controllers.RegistrosControllers.ControllerSalas;
 import views.Cordenador.TelaPrincipal;
-import controllers.Usuarios.Usuarios;
+import controllers.SerializationManager.Usuarios;
 import models.Coordenador.Sala;
 import models.Usuario.*;
 

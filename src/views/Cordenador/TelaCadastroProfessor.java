@@ -1,6 +1,6 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
-import controllers.Usuarios.Serializer;
+import controllers.RegistrosControllers.ControllerSalas;
+import controllers.SerializationManager.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import java.util.Map;
@@ -376,13 +376,16 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         
         contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
         contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-        
+        Sala sala = null;
+        String disciplina = null;
         Professores professor = new Professores(
                 jTextFieldNomeCompleto.getText(),
                 new String(jPasswordField1.getPassword()),
                 jTextFieldCPF.getText(),
                 contatos,
-                getAddress()
+                getAddress(),
+                sala,
+                disciplina
         );
         
         try{

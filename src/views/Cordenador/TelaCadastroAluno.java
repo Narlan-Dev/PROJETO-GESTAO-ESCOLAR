@@ -1,12 +1,10 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
-import controllers.Usuarios.Serializer;
+import controllers.RegistrosControllers.ControllerAlunos;
+import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import models.Coordenador.Sala;
-import models.CustomExceptions.FileExistsException;
 import models.Registros.Alunos;
 import models.Registros.Contatos.Contato;
 import models.Registros.Contatos.Contatos;
@@ -16,6 +14,7 @@ import models.Registros.Endereco;
 public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     //private static TelaCadastroAluno telaCadastroAluno;
     private ControllerSalas controllerSalas;
+    private ControllerAlunos controllerAlunos;
     private Sala sala;
     GerenteJanelas gerenteJanelas;
     DefaultListModel listaSalasModel = new DefaultListModel();
@@ -29,6 +28,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     public TelaCadastroAluno(DefaultListModel listSalasModel) {
         initComponents();
         controllerSalas = new ControllerSalas();
+        controllerAlunos = new ControllerAlunos();
         this.listaSalasModel = listSalasModel;
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         jTextFieldCEP.setDocument(new JTextFieldOnlyNumbers());
@@ -335,7 +335,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
         if(jListAnoLetivo.getSelectedValue() != null){
-            Serializer<Alunos> serializer = new Serializer<>();
             Contatos contatos = new Contatos();
 
             contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
@@ -349,18 +348,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     contatos,
                     sala
             );
-
-            try{
-                serializer.serializeObject(aluno);
-                zerarCampos();
-            } catch (FileExistsException e){
-                int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
-                if (OPTION == JOptionPane.OK_OPTION){
-                    serializer.serializeObject(aluno, true);
-                    zerarCampos();
-                }
-            }
+            controllerAlunos.add(aluno);
+            gerenteJanelas.abrirJanelas(new TelaInicial());
         }
+        
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
                                                     
 
@@ -376,6 +367,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jTextFieldNumero.setText("");
         jTextFieldBairro.setText("");
         jTextFieldComplemento.setText("");
+        jTextFieldResponsaveis.setText("");
     }
     
     

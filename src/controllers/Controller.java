@@ -1,5 +1,4 @@
 package controllers;
-import models.Usuario.Usuario;
 
 public interface Controller<T> {
     public void add(T elemnt);

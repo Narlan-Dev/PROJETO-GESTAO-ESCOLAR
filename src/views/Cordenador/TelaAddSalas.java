@@ -1,6 +1,6 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
-import controllers.Usuarios.Serializer;
+import controllers.RegistrosControllers.ControllerSalas;
+import controllers.SerializationManager.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;

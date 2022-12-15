@@ -1,12 +1,17 @@
 package views.Cordenador;
-import controllers.Salas.ControllerSalas;
+import controllers.RegistrosControllers.ControllerAlunos;
+import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import models.Coordenador.Sala;
+import models.Registros.Alunos;
 
 public class TelaInfoSalas extends javax.swing.JInternalFrame {
     private ControllerSalas controllerSalas;
+    private ControllerAlunos controllerAlunos;
+    private List<Alunos> alunos;
     GerenteJanelas gerenteJanela;
     DefaultListModel listModel;
     Sala sala;
@@ -14,14 +19,21 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
     public TelaInfoSalas(Sala sala, DefaultListModel list) {
         initComponents();
         controllerSalas = new ControllerSalas();
+        controllerAlunos = new ControllerAlunos();
+        listModel = new DefaultListModel();
         this.sala = sala;
-        this.listModel = list;
         gerenteJanela = new GerenteJanelas(TelaPrincipal.jPanelOverview);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
-        //jListAlunos.setModel(listModel);
         jTextFieldCapacidadeMaxima.setDocument(new JTextFieldOnlyNumbers());
         jTextFieldNomeSala.setText(sala.getName());
         jTextFieldCapacidadeMaxima.setText(Integer.toString(sala.getCapacidadeMax()));
+        jListAlunos.setModel(listModel);
+        alunos = controllerAlunos.searchBySala(sala);
+        if(alunos != null){
+            for(Alunos aluno : alunos){
+                listModel.addElement(aluno.getNomeCompleto());
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -53,11 +65,6 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
         jListAlunos.setBackground(new java.awt.Color(241, 242, 244));
         jListAlunos.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jListAlunos.setForeground(new java.awt.Color(24, 33, 53));
-        jListAlunos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Aluno 1", "Aluno 2", "Aluno 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListAlunos.setSelectionBackground(new java.awt.Color(83, 116, 239));
         jListAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,7 +101,6 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
         jTextFieldNomeSala.setForeground(new java.awt.Color(24, 33, 53));
         jTextFieldNomeSala.setToolTipText("");
         jTextFieldNomeSala.setBorder(null);
-        jTextFieldNomeSala.setOpaque(false);
         jPanelAddSala.add(jTextFieldNomeSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 55, 320, 20));
 
         jTextFieldCapacidadeMaxima.setBackground(new java.awt.Color(241, 242, 244));
@@ -102,11 +108,9 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
         jTextFieldCapacidadeMaxima.setForeground(new java.awt.Color(24, 33, 53));
         jTextFieldCapacidadeMaxima.setToolTipText("");
         jTextFieldCapacidadeMaxima.setBorder(null);
-        jTextFieldCapacidadeMaxima.setOpaque(false);
         jPanelAddSala.add(jTextFieldCapacidadeMaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 118, 80, 20));
 
         jLabelBackgroud.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabelBackgroud.setForeground(new java.awt.Color(0, 0, 0));
         jLabelBackgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Cordenador/Resources/TelaInfoSala.png"))); // NOI18N
         jPanelAddSala.add(jLabelBackgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 360, 540));
 

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controllers.Usuarios;
+package controllers.SerializationManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,6 +26,11 @@ public class Deserializer <T extends Registro> {
     
     public Deserializer(){
         
+    }
+    
+    public void delete(T objeto){
+        File file = new File(objeto.getPathName());
+        file.delete();
     }
 
     public ArrayList<T> deserializeObject(T objeto){
@@ -59,16 +64,6 @@ public class Deserializer <T extends Registro> {
         }
         return lista;
     }
-    
-    public static void main(String[] args) throws IOException {
-        Deserializer des = new Deserializer();
-        ArrayList<Alunos> alunos = (ArrayList<Alunos>) des.deserializeObject(new Alunos());
-        List<Alunos> alunosf = alunos.stream()
-                .filter(aluno -> aluno.getSala().getName().equals("Sala 1"))
-                .collect(Collectors.toList());
-        for (Alunos aluno : alunosf){
-            System.out.println(aluno.getNomeCompleto());
-        }
-    }
+
     
 }
