@@ -13,6 +13,8 @@ public class Alunos implements Registro{
     private String responsaveis;
     private Contatos contatos;
     private Sala sala;
+    private String senha;
+    private String login;
 
     public Alunos(){}
 
@@ -28,6 +30,29 @@ public class Alunos implements Registro{
         this.responsaveis = responsaveis;
         this.nomeCompleto = nomeCompleto;
         this.sala = sala;
+        this.senha = cadastroPessoaFisica;
+        this.login = "a" + senha;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+    
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public void setContatos(Contatos contatos){
@@ -36,6 +61,22 @@ public class Alunos implements Registro{
 
     public Contatos getContatos(){
         return this.contatos;
+    }
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public String getCadastroPessoaFisica() {
+        return cadastroPessoaFisica;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public String getResponsaveis() {
+        return responsaveis;
     }
 
     public Object getSerialized() {
@@ -56,4 +97,5 @@ public class Alunos implements Registro{
     public String getPathName() {
         return RegistroEnumeration.ALUNOS.directoryPath + this.cadastroPessoaFisica;
     }
+    
 }

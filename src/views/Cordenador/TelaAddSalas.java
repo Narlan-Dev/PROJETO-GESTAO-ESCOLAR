@@ -1,5 +1,6 @@
 package views.Cordenador;
 import controllers.Salas.ControllerSalas;
+import controllers.Usuarios.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
@@ -86,7 +87,10 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-            controllerSalas.add(new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText())));
+            Sala sala = new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText()));
+            Serializer<Sala> serializer = new Serializer<>();
+            serializer.serializeObject(sala);
+            controllerSalas.add(sala);
             gerenteJanela.abrirJanelas(new TelaSalas());
         } catch (FileExistsException e) {
             //alguam impletação gráfica

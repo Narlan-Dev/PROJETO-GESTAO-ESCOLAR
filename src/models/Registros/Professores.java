@@ -12,6 +12,7 @@ public class Professores implements Registro{
     private String cadastroPessoaFisica;
     private Endereco endereco;
     private Contatos contatos;
+    private String login;
     
     public Professores() {
     }
@@ -26,6 +27,7 @@ public class Professores implements Registro{
         this.senha = senha;
         this.cadastroPessoaFisica = cadastroPessoaFisica;
         this.contatos = contatos;
+        this.login = "a" + cadastroPessoaFisica;
     }
 
     public Endereco getEndereco() {

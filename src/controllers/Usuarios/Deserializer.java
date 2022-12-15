@@ -10,10 +10,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import models.Registros.Alunos;
-import models.Registros.Professores;
 import models.Registros.Registro;
 /**
  *
@@ -61,9 +62,12 @@ public class Deserializer <T extends Registro> {
     
     public static void main(String[] args) throws IOException {
         Deserializer des = new Deserializer();
-        ArrayList<Professores> alunos = (ArrayList<Professores>) des.deserializeObject(new Professores());
-        for (Professores aluno : alunos){
-            System.out.println(aluno);
+        ArrayList<Alunos> alunos = (ArrayList<Alunos>) des.deserializeObject(new Alunos());
+        List<Alunos> alunosf = alunos.stream()
+                .filter(aluno -> aluno.getSala().getName().equals("Sala 1"))
+                .collect(Collectors.toList());
+        for (Alunos aluno : alunosf){
+            System.out.println(aluno.getNomeCompleto());
         }
     }
     
