@@ -346,10 +346,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         
         try{
             serializer.serializeObject(aluno);
+            zerarCampos();
         } catch (FileExistsException e){
             int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
             if (OPTION == JOptionPane.OK_OPTION){
                 serializer.serializeObject(aluno, true);
+                zerarCampos();
             }
         }        
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
