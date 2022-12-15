@@ -3,8 +3,10 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import models.Registros.Registro;
+import models.Registros.RegistroEnumeration;
 
-public class Sala {
+public class Sala implements Registro{
     private Map<String, Boolean> diciplinasDicionario = new HashMap<>();
     private Icon iconSala = new ImageIcon(getClass().getResource("/views/Cordenador/Resources/iconSalas.png"));
     private String nome ="";
@@ -39,5 +41,20 @@ public class Sala {
         for(int i = 0; i < diciplinas.length; i++) {
             this.diciplinasDicionario.put(diciplinas[i], false);
         }
+    }
+
+    @Override
+    public String getIdentificador() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getPath() {
+        return RegistroEnumeration.TURMAS.directoryPath;
+    }
+
+    @Override
+    public String getPathName() {
+        return RegistroEnumeration.TURMAS.directoryPath + this.nome;
     }
 }   

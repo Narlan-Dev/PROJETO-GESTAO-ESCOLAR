@@ -4,6 +4,7 @@ import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import models.Coordenador.Sala;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.Alunos;
 import models.Registros.Contatos.Contato;
@@ -327,21 +328,22 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
         Serializer<Alunos> serializer = new Serializer<>();
-        
         Contatos contatos = new Contatos();
         
         contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
         contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-        
+        Sala sala = null;
         
         Alunos aluno = new Alunos(
                 jTextFieldNomeCompleto.getText(),
                 jTextFieldCPF.getText(),
                 getAddress(),
                 jTextFieldResponsaveis.getText(),
-                contatos
+                contatos,
+                sala
         );
         
         try{

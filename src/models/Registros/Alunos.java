@@ -1,5 +1,6 @@
 package models.Registros;
 
+import models.Coordenador.Sala;
 import models.Registros.Contatos.Contatos;
 
 
@@ -11,6 +12,7 @@ public class Alunos implements Registro{
     private Endereco endereco;
     private String responsaveis;
     private Contatos contatos;
+    private Sala sala;
 
     public Alunos(){}
 
@@ -18,12 +20,14 @@ public class Alunos implements Registro{
             String cadastroPessoaFisica,
             Endereco endereco,
             String responsaveis,
-            Contatos contatos){
+            Contatos contatos,
+            Sala sala){
         this.cadastroPessoaFisica = cadastroPessoaFisica;
         this.endereco = endereco;
         this.contatos = contatos;
         this.responsaveis = responsaveis;
         this.nomeCompleto = nomeCompleto;
+        this.sala = sala;
     }
 
     public void setContatos(Contatos contatos){
