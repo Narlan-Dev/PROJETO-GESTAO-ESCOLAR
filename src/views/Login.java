@@ -4,6 +4,7 @@ import views.Cordenador.TelaPrincipal;
 import controllers.SerializationManager.Usuarios;
 import java.util.List;
 import java.io.File;
+import javax.swing.JOptionPane;
 import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Usuario.*;
@@ -67,21 +68,19 @@ public class Login extends javax.swing.JFrame {
         jTextFieldLogin = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButtonEntrar = new javax.swing.JButton();
+        jPanelCaixaError = new javax.swing.JPanel();
         jLabelBackgorud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextFieldLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLogin.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
         jTextFieldLogin.setToolTipText("");
         jTextFieldLogin.setBorder(null);
-        jTextFieldLogin.setOpaque(false);
         getContentPane().add(jTextFieldLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 300, 30));
 
         jPasswordField1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
         jPasswordField1.setBorder(null);
-        jPasswordField1.setOpaque(false);
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 300, 40));
 
         jButtonEntrar.setBorder(null);
@@ -98,6 +97,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 170, 50));
+
+        jPanelCaixaError.setOpaque(false);
+        getContentPane().add(jPanelCaixaError, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 250, 130));
 
         jLabelBackgorud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/resources/LoginBackgroud.png"))); // NOI18N
         getContentPane().add(jLabelBackgorud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -119,6 +121,8 @@ public class Login extends javax.swing.JFrame {
                 tela.show();
                 this.dispose();
                 //Terminar funcionalidades
+            }else{
+                JOptionPane.showMessageDialog(jPanelCaixaError, "Conta inválida");
             }
 
             /*for(Professores professor : professores){
@@ -141,16 +145,13 @@ public class Login extends javax.swing.JFrame {
                     tela.changeApresentacaoName(aluno.getNomeCompleto());
                     tela.show();
                     this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(jPanelCaixaError, "Conta inválida");
                 }
-            }
-            
+            }    
         } catch (EmptyCamp e) {
-            jTextFieldLogin.setText("Campo obrigatório");
+            JOptionPane.showMessageDialog(jPanelCaixaError, "Campo/s obrigatório/s");
         }
-        /*TelaPrincipal tela = new TelaPrincipal();
-        //tela.changeApresentacaoName(user);
-        tela.show();
-        this.hide();*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
@@ -219,6 +220,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabelBackgorud;
+    private javax.swing.JPanel jPanelCaixaError;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables

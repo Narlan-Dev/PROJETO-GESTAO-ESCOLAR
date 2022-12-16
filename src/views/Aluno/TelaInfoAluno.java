@@ -2,16 +2,19 @@ package views.Aluno;
 import controllers.Views.GerenteJanelas;
 import models.Registros.Alunos;
 import models.Registros.Contatos.Contatos;
+import models.Registros.Endereco;
 
 public class TelaInfoAluno extends javax.swing.JInternalFrame {
     private GerenteJanelas gerenteDeJanelas;
     private Alunos aluno;
     private Contatos contato;
+    private Endereco endereco;
     
     public TelaInfoAluno(Alunos aluno) {
         initComponents();
         this.aluno = aluno;
         this.contato = aluno.getContatos();
+        this.endereco = aluno.getEndereco();
         this.gerenteDeJanelas = new GerenteJanelas(TelaPrincipalAluno.jPanelOverview);
         jLabelOutCPF.setText(aluno.getCadastroPessoaFisica());
         //jLabelOutEmail.setText(contato.get);
@@ -20,7 +23,9 @@ public class TelaInfoAluno extends javax.swing.JInternalFrame {
         jLabelOutResponsaveis.setText(aluno.getResponsaveis());
         //jLabelOutTelefone.setText(aluno.get);
         jLabelOutTurma.setText(aluno.getSala().getName());
-        //jTextAreaContatos.setText(title);
+        jTextAreaContatos.setText(endereco.getCIDADE()+"\n"+endereco.getUF()+"\n"+
+                endereco.getCEP()+"\n"+endereco.getBAIRRO()+"\n"+endereco.getRUA()+"\n"+
+                endereco.getNUMERO()+"\n"+endereco.getCOMPLEMENTO());
     }
 
     @SuppressWarnings("unchecked")

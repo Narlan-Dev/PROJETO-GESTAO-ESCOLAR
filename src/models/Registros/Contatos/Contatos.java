@@ -1,8 +1,6 @@
 package models.Registros.Contatos;
 
 import models.CustomExceptions.ContatoNotFoundException;
-import models.Registros.Registro;
-
 import java.io.Serializable;
 import java.util.HashSet;
 
