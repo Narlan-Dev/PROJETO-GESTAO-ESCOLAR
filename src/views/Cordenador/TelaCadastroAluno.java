@@ -366,7 +366,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
                                                    
-    
     private Endereco getAddress(){
         return new Endereco(
                 jTextFieldUF.getText(),

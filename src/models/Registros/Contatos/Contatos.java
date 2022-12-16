@@ -39,6 +39,14 @@ public class Contatos implements Serializable {
     public HashSet<Contato> getContatos() {
         return this.contatos;
     }
+    
+    public String getEmail(){
+        return null;
+    }
+    
+    public String getTelefone(){
+        return null;
+    }
 
     @Override
     public String toString() {

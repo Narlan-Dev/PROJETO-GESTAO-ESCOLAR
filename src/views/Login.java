@@ -4,6 +4,7 @@ import views.Cordenador.TelaPrincipal;
 import controllers.SerializationManager.Usuarios;
 import java.util.List;
 import java.io.File;
+import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Usuario.*;
 import views.Aluno.TelaPrincipalAluno;
@@ -45,14 +46,12 @@ public class Login extends javax.swing.JFrame {
         Usuarios.usuarios.clear();
         controllerUsuarios.add(new ADM("ADM", "1", "1"));
         update();
+        ControllerSalas.icons.clear();
+        ControllerSalas.salas.clear();
         for(Sala sala : listaSalas){
-            ControllerSalas.icons.clear();
-            ControllerSalas.salas.clear();
             ControllerSalas.icons.put(sala.getName(), sala.getIcon());
             ControllerSalas.salas.put(sala, sala.getName());
-           
-        }
-        
+        } 
     }
     
     private void update(){
@@ -108,10 +107,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         /* Apenas testes, mas ta funcional */
-        
-        
-        
         try {
+            testaCamposObrigatorios();
+            String senha = jPasswordField1.getText();
+            String login = jTextFieldLogin.getText();
             
             user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
             if(user instanceof ADM){
@@ -121,10 +120,8 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 //Terminar funcionalidades
             }
-            
-            String senha = jPasswordField1.getText();
-            String login = jTextFieldLogin.getText();
-            for(Professores professor : professores){
+
+            /*for(Professores professor : professores){
                 if(professor.getSenha().equals(senha) &&
                         professor.getLogin().equals(login)){
                     // lança a braba
@@ -133,7 +130,7 @@ public class Login extends javax.swing.JFrame {
                     tela.show();
                     this.dispose();
                 }
-            }
+            }*/
             
             for(Alunos aluno : alunos){
                 if(aluno.getSenha().equals(senha) &&
@@ -147,8 +144,8 @@ public class Login extends javax.swing.JFrame {
                 }
             }
             
-        } catch (Exception e) {
-            jTextFieldLogin.setText("conta invalida");
+        } catch (EmptyCamp e) {
+            jTextFieldLogin.setText("Campo obrigatório");
         }
         /*TelaPrincipal tela = new TelaPrincipal();
         //tela.changeApresentacaoName(user);
@@ -185,7 +182,14 @@ public class Login extends javax.swing.JFrame {
             }
         }*/
     }//GEN-LAST:event_jButtonEntrarKeyPressed
-
+    
+    public void testaCamposObrigatorios() throws EmptyCamp{
+        if(jTextFieldLogin.getText().equals("") ||
+                jPasswordField1.getText().equals("")){
+            throw new EmptyCamp();
+        };
+    }
+    
     public static void main(String args[]) {
 
         try {
