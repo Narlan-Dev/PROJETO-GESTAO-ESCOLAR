@@ -5,7 +5,7 @@ import java.util.Map;
 import models.Usuario.Usuario;
 
 public class Usuarios implements Controller<Usuario>{
-    private static final Map<Usuario, String> usuarios = new HashMap<>();
+    public static final Map<Usuario, String> usuarios = new HashMap<>();
     
     @Override
     public void add(Usuario user){
@@ -17,7 +17,7 @@ public class Usuarios implements Controller<Usuario>{
                 return user;
             }
         }
-        throw new NullPointerException();
+        return null;
     } 
 
     @Override

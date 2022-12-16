@@ -1,5 +1,6 @@
 package views.Cordenador;
 import controllers.RegistrosControllers.ControllerAlunos;
+import controllers.RegistrosControllers.ControllerProfessores;
 import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
@@ -7,10 +8,12 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import models.Registros.Sala;
 import models.Registros.Alunos;
+import models.Registros.Professores;
 
 public class TelaInfoSalas extends javax.swing.JInternalFrame {
     private ControllerSalas controllerSalas;
     private ControllerAlunos controllerAlunos;
+    private ControllerProfessores controllerProfessores;
     private List<Alunos> alunos;
     GerenteJanelas gerenteJanela;
     DefaultListModel listModel;
@@ -20,6 +23,7 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
         initComponents();
         controllerSalas = new ControllerSalas();
         controllerAlunos = new ControllerAlunos();
+        controllerProfessores = new ControllerProfessores();
         listModel = new DefaultListModel();
         this.sala = sala;
         gerenteJanela = new GerenteJanelas(TelaPrincipal.jPanelOverview);
@@ -121,10 +125,15 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         controllerSalas.delete(sala);
-        /*alunos = controllerAlunos.searchBySala(sala);
-        for (Alunos aluno : alunos){
-            aluno.setSala();
-        }*/
+        List<Alunos> alunos = controllerAlunos.searchBySala(sala);
+        for (Alunos aluno: alunos){
+            controllerAlunos.delete(aluno);
+        }
+        
+        List<Professores> professores = controllerProfessores.searchBySala(sala);
+        for (Professores professor: professores){
+            controllerProfessores.delete(professor);
+        }
         gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 

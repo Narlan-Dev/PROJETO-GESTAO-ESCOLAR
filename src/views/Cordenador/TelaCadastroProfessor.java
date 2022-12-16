@@ -399,6 +399,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
                 
                 controllerProfessores.add(professor);
                 sala.setDisponibilidade(disciplina);
+                controllerSalas.update(sala, sala.getName(), Integer.toString(sala.getCapacidadeMax()));
                 gerenteJanelas.abrirJanelas(new TelaInicial());
             } catch (EmptyCamp ex) {
                 JOptionPane.showMessageDialog(null, EmptyCamp.getMessegen());

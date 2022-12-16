@@ -11,7 +11,6 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
             
     public TelaPrincipalAluno() {
         initComponents();
-        //his.aluno = aluno;
         this.gerenteDeJanelas = new GerenteJanelas(jPanelOverview);
         gerenteDeJanelas.abrirJanelas(TelaInicial.getInstancia());
     }
@@ -138,7 +137,8 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelInfoAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked
-        Login.getInstancia().show();
+        //Login.getInstancia().show();
+        new Login().show();
         this.dispose();
     }//GEN-LAST:event_jPanelDeslogarMouseClicked
 
@@ -146,9 +146,14 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
         gerenteDeJanelas.abrirJanelas(TelaInicialAluno.getInstancia());
     }//GEN-LAST:event_jPanelTelaInicialMouseClicked
     
-    public void changeApresentacaoName(Usuario user){
-        jLabelApresentacao.setText("Oi, "+user.getName());
+    public void changeApresentacaoName(String nome){
+        jLabelApresentacao.setText("Oi, "+nome);
     }
+    
+    public void recebeAluno(Alunos aluno){
+        this.aluno = aluno;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -180,6 +185,7 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelApresentacao;
     private javax.swing.JLabel jLabelBackgroud;

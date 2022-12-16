@@ -28,7 +28,7 @@ public class ControllerAlunos implements Controller<Alunos> {
             throw new ReachingMaximumCapacity();
         }
     }
-    
+
     @Override
     public void update(Alunos aluno, String text, String txt) {
         serializer.serializeObject(aluno, true);  

@@ -6,6 +6,7 @@ import java.util.List;
 import java.io.File;
 import models.Registros.*;
 import models.Usuario.*;
+import views.Aluno.TelaPrincipalAluno;
 
 public class Login extends javax.swing.JFrame {
     private static Login log;
@@ -15,6 +16,8 @@ public class Login extends javax.swing.JFrame {
     private ControllerAlunos controllerAlunos;
     private ControllerProfessores controllerProfessores;
     private ControllerSalas controllerSalas;
+    private List<Alunos> alunos;
+    private List<Professores> professores;
     
     public static Login getInstancia(){
         if(log == null){
@@ -27,6 +30,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         controllerSalas = new ControllerSalas();
         controllerUsuarios = new Usuarios();
+        controllerProfessores = new ControllerProfessores();
+        controllerAlunos = new ControllerAlunos();
         File pastas;
         boolean check;
         for (RegistroEnumeration reg : RegistroEnumeration.values()){
@@ -37,14 +42,23 @@ public class Login extends javax.swing.JFrame {
             }
         }
         /*Teste*/
+        Usuarios.usuarios.clear();
         controllerUsuarios.add(new ADM("ADM", "1", "1"));
-        controllerUsuarios.add(new ADM("Narlan", "1", "2"));
-        listaSalas = controllerSalas.deserializeAll();
+        update();
         for(Sala sala : listaSalas){
+            ControllerSalas.icons.clear();
+            ControllerSalas.salas.clear();
             ControllerSalas.icons.put(sala.getName(), sala.getIcon());
             ControllerSalas.salas.put(sala, sala.getName());
+           
         }
         
+    }
+    
+    private void update(){
+        listaSalas = controllerSalas.deserializeAll();
+        alunos = controllerAlunos.deserializeAll();
+        professores = controllerProfessores.deserializeAll();
     }
 
     @SuppressWarnings("unchecked")
@@ -98,53 +112,41 @@ public class Login extends javax.swing.JFrame {
         
         
         try {
-            System.out.println("ok");
+            
             user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
             if(user instanceof ADM){
                 TelaPrincipal tela = new TelaPrincipal();
-                tela.changeApresentacaoName(user);
+                tela.changeApresentacaoName(user.getName());
                 tela.show();
                 this.dispose();
                 //Terminar funcionalidades
             }
             
-            
-            for(Alunos aluno : controllerAlunos.deserializeAll()){
-                if(aluno.getSenha()  == jPasswordField1.getText() &&
-                        aluno.getLogin() == jTextFieldLogin.getText()){
-                    // lança a braba
-                }
-            }
-            
             String senha = jPasswordField1.getText();
-            System.out.println(senha);
             String login = jTextFieldLogin.getText();
-            System.out.println(senha);
-            for(Professores professor : controllerProfessores.deserializeAll()){
-                if(professor.getSenha().equals(senha)){
+            for(Professores professor : professores){
+                if(professor.getSenha().equals(senha) &&
+                        professor.getLogin().equals(login)){
                     // lança a braba
                     TelaPrincipal tela = new TelaPrincipal();
-                    tela.changeApresentacaoName(user);
+                    tela.changeApresentacaoName(professor.getNome());
                     tela.show();
                     this.dispose();
                 }
             }
             
-            
-            
-            /*if(user.getType().equals("coordenador")){
-                TelaPrincipal tela = new TelaPrincipal();
-                tela.changeApresentacaoName(user);
-                tela.show();
-                this.dispose();
-                //Terminar funcionalidades
+            for(Alunos aluno : alunos){
+                if(aluno.getSenha().equals(senha) &&
+                        aluno.getLogin().equals(login)){
+                    // lança a braba
+                    TelaPrincipalAluno tela = new TelaPrincipalAluno();
+                    tela.recebeAluno(aluno);
+                    tela.changeApresentacaoName(aluno.getNomeCompleto());
+                    tela.show();
+                    this.dispose();
+                }
             }
-            if(user.getType().equals("professor")){
-                //Criar as telas e as classes
-            }
-            if(user instanceof Alunos){
-                //Criar as telas e as terminar classes
-            }*/
+            
         } catch (Exception e) {
             jTextFieldLogin.setText("conta invalida");
         }
@@ -155,7 +157,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+       /* if (evt.getKeyCode() == evt.VK_ENTER) {                    
             try {
                 user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
                 if(user instanceof ADM){
@@ -177,11 +179,11 @@ public class Login extends javax.swing.JFrame {
                 }
                 if(user instanceof Alunos){
                     //Criar as telas e as terminar classes
-                }*/
+                }
             } catch (Exception e) {
                 jTextFieldLogin.setText("conta invalida");
             }
-        }
+        }*/
     }//GEN-LAST:event_jButtonEntrarKeyPressed
 
     public static void main(String args[]) {

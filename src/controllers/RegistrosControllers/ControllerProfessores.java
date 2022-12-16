@@ -8,9 +8,11 @@ import controllers.Controller;
 import controllers.SerializationManager.Deserializer;
 import controllers.SerializationManager.Serializer;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.Professores;
+import models.Registros.Sala;
 
 /**
  *
@@ -37,6 +39,19 @@ public class ControllerProfessores implements Controller<Professores>{
         return des.deserializeObject(new Professores());
     }
 
+    public List<Professores> searchBySala(Sala sala){
+        List<Professores> professores = des.deserializeObject(new Professores());
+        List<Professores> professoresf = null;
+        try{
+            professoresf = professores.stream()
+                    .filter(aluno -> aluno.getSala().getName().equals(sala.getName()))
+                    .collect(Collectors.toList());
+        } catch (RuntimeException e){
+            
+        }
+        return professoresf;
+    }
+    
     @Override
     public void update(Professores element, String text, String txt) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

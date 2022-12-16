@@ -38,6 +38,7 @@ public class Sala implements Registro{
     
     public void setDisponibilidade(String disciplina){
         disciplinasDicionario.replace(disciplina, Boolean.TRUE);
+        
     }
     
     public Sala(String name, int capacidadeMax){

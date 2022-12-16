@@ -1,7 +1,6 @@
 package views.Cordenador;
 import controllers.Views.GerenteJanelas;
 import views.Login;
-import models.Usuario.*;
 
 public class TelaPrincipal extends javax.swing.JFrame {
     GerenteJanelas gerenteDeJanelas; 
@@ -228,7 +227,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelCadastroAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked
-        Login.getInstancia().show();
+        new Login().show();
         this.dispose();
     }//GEN-LAST:event_jPanelDeslogarMouseClicked
 
@@ -236,8 +235,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gerenteDeJanelas.abrirJanelas(TelaInicial.getInstancia());
     }//GEN-LAST:event_jPanelTelaInicialMouseClicked
     
-    public void changeApresentacaoName(Usuario user){
-        jLabelApresentacao.setText("Oi, "+user.getName());
+    public void changeApresentacaoName(String nome){
+        jLabelApresentacao.setText("Oi, "+nome);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
