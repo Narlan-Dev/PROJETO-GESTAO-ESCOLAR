@@ -38,6 +38,15 @@ public class Alunos implements Registro{
         return senha;
     }
 
+    
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+    
+    public void setSala() {
+        this.sala = null;
+    }
+
     public Sala getSala() {
         return sala;
     }

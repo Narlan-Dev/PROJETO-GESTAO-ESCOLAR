@@ -25,10 +25,6 @@ public class ControllerAlunos implements Controller<Alunos> {
         }
     }
     
-    public void serializarAluno(){
-        
-    } 
-    
     @Override
     public void update(Alunos element, String text, String txt) {
         //Implementar
