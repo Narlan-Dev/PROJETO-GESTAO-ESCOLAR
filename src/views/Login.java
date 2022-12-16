@@ -5,7 +5,6 @@ import controllers.SerializationManager.Usuarios;
 import java.util.List;
 import java.io.File;
 import javax.swing.JOptionPane;
-import models.CustomExceptions.ContaInvalida;
 import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Usuario.*;
