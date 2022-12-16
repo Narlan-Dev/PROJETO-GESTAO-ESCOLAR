@@ -119,7 +119,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
         try {
             String data = jListAnoLetivo.getSelectedValue();
             Sala sala = controllerSalas.shearchByName(data);
-            infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
+            infoSalas.abrirJanelas(new TelaInfoSalas(sala));
             //jLabelText.setText(sala.getName());
         } catch (Exception e) {
             //Exception Empty list

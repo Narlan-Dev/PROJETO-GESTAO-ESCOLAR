@@ -7,7 +7,7 @@ import models.Registros.Registro;
 import models.Registros.RegistroEnumeration;
 
 public class Sala implements Registro{
-    private Map<String, Boolean> diciplinasDicionario = new HashMap<>();
+    private Map<String, Boolean> disciplinasDicionario = new HashMap<>();
     private Icon iconSala = new ImageIcon(getClass().getResource("/views/Cordenador/Resources/iconSalas.png"));
     private String nome ="";
     private int capacidadeMax;
@@ -28,10 +28,14 @@ public class Sala implements Registro{
         this.capacidadeMax = newValor;
     }
     public Map<String, Boolean> getDiciplinaDicionario(){
-        return this.diciplinasDicionario;
+        return this.disciplinasDicionario;
     }
     public void setDiciplinaDisponibilidade(String name, Boolean modo){
-        this.diciplinasDicionario.replace(name, modo);
+        this.disciplinasDicionario.replace(name, modo);
+    }
+    
+    public void setDisponibilidade(String disciplina){
+        disciplinasDicionario.replace(disciplina, Boolean.TRUE);
     }
     
     public Sala(String name, int capacidadeMax){
@@ -39,7 +43,7 @@ public class Sala implements Registro{
         this.capacidadeMax = capacidadeMax;
         String[] diciplinas = {"Matemética", "Português", "Geografia", "Ciências"};
         for(int i = 0; i < diciplinas.length; i++) {
-            this.diciplinasDicionario.put(diciplinas[i], false);
+            this.disciplinasDicionario.put(diciplinas[i], false);
         }
     }
 

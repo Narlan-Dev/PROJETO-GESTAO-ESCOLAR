@@ -16,7 +16,7 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
     DefaultListModel listModel;
     Sala sala;
     
-    public TelaInfoSalas(Sala sala, DefaultListModel list) {
+    public TelaInfoSalas(Sala sala) {
         initComponents();
         controllerSalas = new ControllerSalas();
         controllerAlunos = new ControllerAlunos();

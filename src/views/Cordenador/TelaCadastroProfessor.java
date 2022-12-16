@@ -1,21 +1,22 @@
 package views.Cordenador;
+import controllers.RegistrosControllers.ControllerProfessores;
 import controllers.RegistrosControllers.ControllerSalas;
-import controllers.SerializationManager.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import java.util.Map;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import models.Coordenador.Sala;
-import models.CustomExceptions.FileExistsException;
 import models.Registros.*;
 import models.Registros.Contatos.*;
 
 public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     //private static TelaCadastroProfessor telaCadastroProfessor;
     private Map<String, Boolean> diciplinasDicionario;
+    private ControllerProfessores controllerProfessores;
     private ControllerSalas controllerSalas;
     GerenteJanelas gerenteJanelas;
+    private Sala sala;
+    private String disciplina;
     DefaultListModel listaSalasModel = new DefaultListModel();
     
     /*public static TelaCadastroProfessor getInstancia(){
@@ -26,6 +27,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     }*/
     public TelaCadastroProfessor(DefaultListModel listSalasModel) {
         initComponents();
+        controllerProfessores = new ControllerProfessores();
         controllerSalas = new ControllerSalas();
         this.listaSalasModel = listSalasModel;
         this.gerenteJanelas = new GerenteJanelas(TelaPrincipal.jPanelOverview);
@@ -168,6 +170,11 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         jListDiciplinas.setForeground(new java.awt.Color(24, 33, 53));
         jListDiciplinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListDiciplinas.setSelectionBackground(new java.awt.Color(83, 116, 239));
+        jListDiciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListDiciplinasMouseClicked(evt);
+            }
+        });
         Diciplinas.setViewportView(jListDiciplinas);
 
         AnoLetivo.setBorder(null);
@@ -369,34 +376,24 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
+        if(jListAnoLetivo.getSelectedValue() != null && jListDiciplinas.getSelectedValue() != null){
+            Contatos contatos = new Contatos();
 
-        Serializer<Professores> serializer = new Serializer<>();
-        
-        Contatos contatos = new Contatos();
-        
-        contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
-        contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-        Sala sala = null;
-        String disciplina = null;
-        Professores professor = new Professores(
-                jTextFieldNomeCompleto.getText(),
-                new String(jPasswordField1.getPassword()),
-                jTextFieldCPF.getText(),
-                contatos,
-                getAddress(),
-                sala,
-                disciplina
-        );
-        
-        try{
-            serializer.serializeObject(professor);
-            zerarCampos();
-        } catch (FileExistsException e){
-            int OPTION = JOptionPane.showConfirmDialog(null, "Sobrescrever registro já existente?", "", JOptionPane.OK_CANCEL_OPTION);
-            if (OPTION == JOptionPane.OK_OPTION){
-                serializer.serializeObject(professor, true);
-                zerarCampos();
-            }
+            contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+            contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+            Professores professor = new Professores(
+                    jTextFieldNomeCompleto.getText(),
+                    new String(jPasswordField1.getPassword()),
+                    jTextFieldCPF.getText(),
+                    contatos,
+                    getAddress(),
+                    sala,
+                    disciplina
+            );
+
+            controllerProfessores.add(professor);
+            sala.setDisponibilidade(disciplina);
+            gerenteJanelas.abrirJanelas(new TelaInicial());
         }
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
 
@@ -411,21 +408,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
                 jTextFieldComplemento.getText()
         );
     }
-    
-    private void zerarCampos(){
-        jTextFieldEmail.setText("");
-        jTextFieldNomeCompleto.setText("");
-        jTextFieldCPF.setText("");
-        jTextFieldTelefone.setText("");
-        jTextFieldUF.setText("");
-        jTextFieldCEP.setText("");
-        jTextFieldCidade.setText("");
-        jTextFieldLogradouro.setText("");
-        jTextFieldNumero.setText("");
-        jTextFieldBairro.setText("");
-        jTextFieldComplemento.setText("");
-        jPasswordField1.setText("");
-    }
+
     
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         gerenteJanelas.abrirJanelas(TelaInicial.getInstancia());
@@ -436,7 +419,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             DefaultListModel listaDiciplinaModel = new DefaultListModel();
             listaDiciplinaModel.clear();
             String data = jListAnoLetivo.getSelectedValue();
-            Sala sala = controllerSalas.shearchByName(data);
+            sala = controllerSalas.shearchByName(data);
             diciplinasDicionario = sala.getDiciplinaDicionario();
             jListDiciplinas.setModel(listaDiciplinaModel);
             for(String diciplina : diciplinasDicionario.keySet()){
@@ -449,6 +432,14 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             //Exception Empty list
         }
     }//GEN-LAST:event_jListAnoLetivoMouseClicked
+
+    private void jListDiciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListDiciplinasMouseClicked
+        try{
+            disciplina = jListDiciplinas.getSelectedValue();
+        } catch (RuntimeException e){
+            // implementar
+        }
+    }//GEN-LAST:event_jListDiciplinasMouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
