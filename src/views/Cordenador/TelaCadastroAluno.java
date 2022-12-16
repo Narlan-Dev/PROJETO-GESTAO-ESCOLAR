@@ -3,8 +3,13 @@ import controllers.RegistrosControllers.ControllerAlunos;
 import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import models.Coordenador.Sala;
+import models.CustomExceptions.EmptyCamp;
+import models.CustomExceptions.ReachingMaximumCapacity;
 import models.Registros.Alunos;
 import models.Registros.Contatos.Contato;
 import models.Registros.Contatos.Contatos;
@@ -233,7 +238,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabelCPF.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         jLabelCPF.setForeground(new java.awt.Color(24, 33, 53));
-        jLabelCPF.setText("CPF ");
+        jLabelCPF.setText("CPF *");
         jPanelBackgroud1.add(jLabelCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 555, 50, 20));
 
         jLabelTelefone.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
@@ -334,42 +339,33 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
     
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
-        if(jListAnoLetivo.getSelectedValue() != null){
-            Contatos contatos = new Contatos();
-
-            contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
-            contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-
-            Alunos aluno = new Alunos(
-                    jTextFieldNomeCompleto.getText(),
-                    jTextFieldCPF.getText(),
-                    getAddress(),
-                    jTextFieldResponsaveis.getText(),
-                    contatos,
-                    sala
-            );
-            controllerAlunos.add(aluno);
-            gerenteJanelas.abrirJanelas(new TelaInicial());
+        if(sala != null){
+            try {
+                testaCamposObrigatorios();
+                Contatos contatos = new Contatos();
+                
+                contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+                contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+                
+                Alunos aluno = new Alunos(
+                        jTextFieldNomeCompleto.getText(),
+                        jTextFieldCPF.getText(),
+                        getAddress(),
+                        jTextFieldResponsaveis.getText(),
+                        contatos,
+                        sala
+                );
+                
+                controllerAlunos.add(aluno, sala);
+                gerenteJanelas.abrirJanelas(new TelaInicial());
+            } catch (ReachingMaximumCapacity exe) {
+                JOptionPane.showMessageDialog(null, ReachingMaximumCapacity.getMessegen());
+            } catch (EmptyCamp ex) {
+                JOptionPane.showMessageDialog(null, EmptyCamp.getMessegen());
+            }
         }
-        
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
-                                                    
-
-    private void zerarCampos(){
-        jTextFieldEmail.setText("");
-        jTextFieldNomeCompleto.setText("");
-        jTextFieldCPF.setText("");
-        jTextFieldTelefone.setText("");
-        jTextFieldUF.setText("");
-        jTextFieldCEP.setText("");
-        jTextFieldCidade.setText("");
-        jTextFieldLogradouro.setText("");
-        jTextFieldNumero.setText("");
-        jTextFieldBairro.setText("");
-        jTextFieldComplemento.setText("");
-        jTextFieldResponsaveis.setText("");
-    }
-    
+                                                   
     
     private Endereco getAddress(){
         return new Endereco(
@@ -397,10 +393,24 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             String data = jListAnoLetivo.getSelectedValue();
             sala = controllerSalas.shearchByName(data);
         } catch (Exception e) {
-            //Exception Empty list
         }
     }//GEN-LAST:event_jListAnoLetivoMouseClicked
-
+    
+    public void testaCamposObrigatorios() throws EmptyCamp{
+        if(jTextFieldCPF.getText().equals("") &&
+                jTextFieldBairro.getText().equals("") &&
+                jTextFieldCEP.getText().equals("") &&
+                jTextFieldCidade.getText().equals("") &&
+                jTextFieldEmail.getText().equals("") &&
+                jTextFieldLogradouro.getText().equals("") &&
+                jTextFieldNomeCompleto.getText().equals("") &&
+                jTextFieldNumero.getText().equals("") &&
+                jTextFieldResponsaveis.getText().equals("") &&
+                jTextFieldTelefone.getText().equals("") &&
+                jTextFieldUF.getText().equals("")){
+            throw new EmptyCamp();
+        };
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnoLetivo;

@@ -43,9 +43,9 @@ public class Alunos implements Registro{
         this.sala = sala;
     }
     
-    public void setSala() {
+    /*public void setSala() {
         this.sala = null;
-    }
+    }*/
 
     public Sala getSala() {
         return sala;

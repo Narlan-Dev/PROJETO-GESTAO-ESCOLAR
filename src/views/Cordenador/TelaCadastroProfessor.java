@@ -4,8 +4,12 @@ import controllers.RegistrosControllers.ControllerSalas;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import models.Coordenador.Sala;
+import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Registros.Contatos.*;
 
@@ -376,24 +380,29 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarCadastroActionPerformed
-        if(jListAnoLetivo.getSelectedValue() != null && jListDiciplinas.getSelectedValue() != null){
-            Contatos contatos = new Contatos();
-
-            contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
-            contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
-            Professores professor = new Professores(
-                    jTextFieldNomeCompleto.getText(),
-                    new String(jPasswordField1.getPassword()),
-                    jTextFieldCPF.getText(),
-                    contatos,
-                    getAddress(),
-                    sala,
-                    disciplina
-            );
-
-            controllerProfessores.add(professor);
-            sala.setDisponibilidade(disciplina);
-            gerenteJanelas.abrirJanelas(new TelaInicial());
+        if(sala != null && disciplina != null){
+            try {
+                testaCamposObrigatorios();
+                Contatos contatos = new Contatos();
+                
+                contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
+                contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
+                Professores professor = new Professores(
+                        jTextFieldNomeCompleto.getText(),
+                        new String(jPasswordField1.getPassword()),
+                        jTextFieldCPF.getText(),
+                        contatos,
+                        getAddress(),
+                        sala,
+                        disciplina
+                );
+                
+                controllerProfessores.add(professor);
+                sala.setDisponibilidade(disciplina);
+                gerenteJanelas.abrirJanelas(new TelaInicial());
+            } catch (EmptyCamp ex) {
+                JOptionPane.showMessageDialog(null, EmptyCamp.getMessegen());
+            }
         }
     }//GEN-LAST:event_jButtonFinalizarCadastroActionPerformed
 
@@ -440,7 +449,21 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             // implementar
         }
     }//GEN-LAST:event_jListDiciplinasMouseClicked
-    
+    public void testaCamposObrigatorios() throws EmptyCamp{
+        if(jTextFieldCPF.getText().equals("") &&
+                jTextFieldBairro.getText().equals("") &&
+                jTextFieldCEP.getText().equals("") &&
+                jTextFieldCidade.getText().equals("") &&
+                jTextFieldEmail.getText().equals("") &&
+                jTextFieldLogradouro.getText().equals("") &&
+                jTextFieldNomeCompleto.getText().equals("") &&
+                jTextFieldNumero.getText().equals("") &&
+                jPasswordField1.getText().equals("") &&
+                jTextFieldTelefone.getText().equals("") &&
+                jTextFieldUF.getText().equals("")){
+            throw new EmptyCamp();
+        };
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane AnoLetivo;

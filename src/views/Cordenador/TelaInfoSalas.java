@@ -121,10 +121,10 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         controllerSalas.delete(sala);
-        alunos = controllerAlunos.searchBySala(sala);
+        /*alunos = controllerAlunos.searchBySala(sala);
         for (Alunos aluno : alunos){
             aluno.setSala();
-        }
+        }*/
         gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
@@ -144,7 +144,6 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
             //Exception Empty list
         }*/
     }//GEN-LAST:event_jListAlunosMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Alunos;
