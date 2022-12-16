@@ -342,17 +342,14 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         if(sala != null){
             try {
                 testaCamposObrigatorios();
-                Contatos contatos = new Contatos();
-                
-                contatos.addContato(new Contato(ContatosEnumeration.EMAIL, jTextFieldEmail.getText()));
-                contatos.addContato(new Contato(ContatosEnumeration.TELEFONE, jTextFieldTelefone.getText()));
                 
                 Alunos aluno = new Alunos(
                         jTextFieldNomeCompleto.getText(),
                         jTextFieldCPF.getText(),
                         getAddress(),
                         jTextFieldResponsaveis.getText(),
-                        contatos,
+                        jTextFieldEmail.getText(),
+                        jTextFieldTelefone.getText(),
                         sala
                 );
                 

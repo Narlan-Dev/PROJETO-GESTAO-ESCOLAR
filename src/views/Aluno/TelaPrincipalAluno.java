@@ -1,9 +1,7 @@
 package views.Aluno;
-import views.Cordenador.*;
 import controllers.Views.GerenteJanelas;
 import models.Registros.Alunos;
 import views.Login;
-import models.Usuario.*;
 
 public class TelaPrincipalAluno extends javax.swing.JFrame {
     private GerenteJanelas gerenteDeJanelas;
@@ -12,7 +10,7 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
     public TelaPrincipalAluno() {
         initComponents();
         this.gerenteDeJanelas = new GerenteJanelas(jPanelOverview);
-        gerenteDeJanelas.abrirJanelas(TelaInicial.getInstancia());
+        gerenteDeJanelas.abrirJanelas(TelaInicialAluno.getInstancia());
     }
 
     @SuppressWarnings("unchecked")

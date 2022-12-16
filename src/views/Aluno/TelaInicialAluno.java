@@ -33,12 +33,12 @@ public class TelaInicialAluno extends javax.swing.JInternalFrame {
         setRequestFocusEnabled(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelBackgroud.setBackground(new java.awt.Color(79, 102, 216));
+        jPanelBackgroud.setBackground(new java.awt.Color(44, 77, 153));
         jPanelBackgroud.setForeground(new java.awt.Color(231, 239, 248));
 
         jLabelTelaInicial.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabelTelaInicial.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelTelaInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Cordenador/Resources/telaInicial.png"))); // NOI18N
+        jLabelTelaInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/Aluno/Resources/TelaInicialAluno.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanelBackgroudLayout = new javax.swing.GroupLayout(jPanelBackgroud);
         jPanelBackgroud.setLayout(jPanelBackgroudLayout);
@@ -51,9 +51,9 @@ public class TelaInicialAluno extends javax.swing.JInternalFrame {
         jPanelBackgroudLayout.setVerticalGroup(
             jPanelBackgroudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroudLayout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabelTelaInicial)
-                .addGap(32, 32, 32))
+                .addGap(88, 88, 88))
         );
 
         getContentPane().add(jPanelBackgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 770));

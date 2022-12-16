@@ -10,6 +10,8 @@ public class Alunos implements Registro{
     private String cadastroPessoaFisica;
     private Endereco endereco;
     private String responsaveis;
+    private String email;
+    private String telefone;
     private Contatos contatos;
     private Sala sala;
     private String senha;
@@ -21,12 +23,14 @@ public class Alunos implements Registro{
             String cadastroPessoaFisica,
             Endereco endereco,
             String responsaveis,
-            Contatos contatos,
+            String email,
+            String telefone,
             Sala sala){
         this.cadastroPessoaFisica = cadastroPessoaFisica;
         this.endereco = endereco;
-        this.contatos = contatos;
         this.responsaveis = responsaveis;
+        this.email = email;
+        this.telefone = telefone;
         this.nomeCompleto = nomeCompleto;
         this.sala = sala;
         this.senha = cadastroPessoaFisica;
@@ -37,6 +41,12 @@ public class Alunos implements Registro{
         return senha;
     }
 
+    public String getEmail(){
+        return this.email;
+    }
+    public String getTelefone(){
+        return this.telefone;
+    }
     
     public void setSala(Sala sala) {
         this.sala = sala;
@@ -61,14 +71,6 @@ public class Alunos implements Registro{
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public void setContatos(Contatos contatos){
-        this.contatos = contatos;
-    }
-
-    public Contatos getContatos(){
-        return this.contatos;
     }
    
     public String getNomeCompleto() {

@@ -5,6 +5,7 @@ import controllers.SerializationManager.Usuarios;
 import java.util.List;
 import java.io.File;
 import javax.swing.JOptionPane;
+import models.CustomExceptions.ContaInvalida;
 import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Usuario.*;
@@ -120,21 +121,7 @@ public class Login extends javax.swing.JFrame {
                 tela.changeApresentacaoName(user.getName());
                 tela.show();
                 this.dispose();
-                //Terminar funcionalidades
-            }else{
-                JOptionPane.showMessageDialog(jPanelCaixaError, "Conta inválida");
             }
-
-            /*for(Professores professor : professores){
-                if(professor.getSenha().equals(senha) &&
-                        professor.getLogin().equals(login)){
-                    // lança a braba
-                    TelaPrincipal tela = new TelaPrincipal();
-                    tela.changeApresentacaoName(professor.getNome());
-                    tela.show();
-                    this.dispose();
-                }
-            }*/
             
             for(Alunos aluno : alunos){
                 if(aluno.getSenha().equals(senha) &&
@@ -145,42 +132,23 @@ public class Login extends javax.swing.JFrame {
                     tela.changeApresentacaoName(aluno.getNomeCompleto());
                     tela.show();
                     this.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(jPanelCaixaError, "Conta inválida");
                 }
-            }    
+            }
         } catch (EmptyCamp e) {
             JOptionPane.showMessageDialog(jPanelCaixaError, "Campo/s obrigatório/s");
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
-       /* if (evt.getKeyCode() == evt.VK_ENTER) {                    
-            try {
-                user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
-                if(user instanceof ADM){
-                    TelaPrincipal tela = new TelaPrincipal();
-                    tela.changeApresentacaoName(user);
-                    tela.show();
-                    this.dispose();
-                    //Terminar funcionalidades
-                }
-                /*if(user.getType().equals("coordenador")){
-                    TelaPrincipal tela = new TelaPrincipal();
-                    tela.changeApresentacaoName(user);
-                    tela.show();
-                    this.dispose();
-                    //Terminar funcionalidades
-                }
-                if(user.getType().equals("professor")){
-                    //Criar as telas e as classes
-                }
-                if(user instanceof Alunos){
-                    //Criar as telas e as terminar classes
-                }
-            } catch (Exception e) {
-                jTextFieldLogin.setText("conta invalida");
-            }
+       /*try {
+            testaCamposObrigatorios();
+            pesquisaConta();   
+        } catch (EmptyCamp e) {
+            jPanelCaixaError.removeAll();
+            JOptionPane.showMessageDialog(jPanelCaixaError, "Campo/s obrigatório/s");
+        } catch (ContaInvalida ex) {
+            jPanelCaixaError.removeAll();
+            JOptionPane.showMessageDialog(jPanelCaixaError, "Conta inválida");
         }*/
     }//GEN-LAST:event_jButtonEntrarKeyPressed
     
@@ -188,7 +156,7 @@ public class Login extends javax.swing.JFrame {
         if(jTextFieldLogin.getText().equals("") ||
                 jPasswordField1.getText().equals("")){
             throw new EmptyCamp();
-        };
+        }
     }
     
     public static void main(String args[]) {
@@ -213,7 +181,8 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            Login.getInstancia().show();
+            new Login().setVisible(true);
+            //Login.getInstancia().show();
         });
     }
 
