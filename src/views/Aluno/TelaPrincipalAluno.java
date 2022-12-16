@@ -1,14 +1,17 @@
 package views.Aluno;
 import views.Cordenador.*;
 import controllers.Views.GerenteJanelas;
+import models.Registros.Alunos;
 import views.Login;
 import models.Usuario.*;
 
 public class TelaPrincipalAluno extends javax.swing.JFrame {
-    GerenteJanelas gerenteDeJanelas; 
+    private GerenteJanelas gerenteDeJanelas;
+    private Alunos aluno;
             
     public TelaPrincipalAluno() {
         initComponents();
+        //his.aluno = aluno;
         this.gerenteDeJanelas = new GerenteJanelas(jPanelOverview);
         gerenteDeJanelas.abrirJanelas(TelaInicial.getInstancia());
     }
@@ -131,7 +134,7 @@ public class TelaPrincipalAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelInfoAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelInfoAlunoMouseClicked
-        gerenteDeJanelas.abrirJanelas(new TelaInfoAluno());
+        gerenteDeJanelas.abrirJanelas(new TelaInfoAluno(aluno));
     }//GEN-LAST:event_jPanelInfoAlunoMouseClicked
 
     private void jPanelDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDeslogarMouseClicked

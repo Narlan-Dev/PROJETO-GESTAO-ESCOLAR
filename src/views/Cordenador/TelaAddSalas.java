@@ -4,6 +4,8 @@ import controllers.SerializationManager.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import models.CustomExceptions.EmptyCamp;
 import models.Registros.Sala;
 import models.CustomExceptions.FileExistsException;
 
@@ -87,14 +89,19 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
+            testaCamposObrigatorios();
             Sala sala = new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText()));
             controllerSalas.add(sala);
             gerenteJanela.abrirJanelas(new TelaSalas());
-        } catch (FileExistsException e) {
-            //alguam impletação gráfica
+        } catch (EmptyCamp e) {
+            JOptionPane.showMessageDialog(null, EmptyCamp.getMessegen());
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
-
+    public void testaCamposObrigatorios() throws EmptyCamp{
+        if(jTextFieldNomeSala.getText().equals("")||jTextFieldCapacidadeMaxima.getText().equals("")){
+            throw new EmptyCamp();
+        }
+    }
     private void jButtonRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetornarActionPerformed
         gerenteJanela.abrirJanelas(new TelaSalas());
     }//GEN-LAST:event_jButtonRetornarActionPerformed
