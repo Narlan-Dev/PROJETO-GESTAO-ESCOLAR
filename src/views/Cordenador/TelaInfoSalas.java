@@ -5,7 +5,7 @@ import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 import models.Registros.Alunos;
 
 public class TelaInfoSalas extends javax.swing.JInternalFrame {
@@ -137,7 +137,7 @@ public class TelaInfoSalas extends javax.swing.JInternalFrame {
         //DefaultListModel<E> = (DefaultListModel) jListAnoLetivo.getModel();
         /*try {
             String data = jListAnoLetivo.getSelectedValue();
-            Sala sala = ControllerSalas.shearchByName(data);
+            Sala sala = ControllerSalas.searchByName(data);
             infoSalas.abrirJanelas(new TelaInfoSalas(sala, listaModel));
             //jLabelText.setText(sala.getName());
         } catch (Exception e) {

@@ -3,7 +3,6 @@ package models.Registros;
 import models.Registros.Contatos.Contatos;
 
 import java.io.File;
-import models.Coordenador.Sala;
 
 @SuppressWarnings("unused")
 public class Professores implements Registro{
@@ -67,6 +66,10 @@ public class Professores implements Registro{
 
     public String getCadastroPessoaFisica() {
         return cadastroPessoaFisica;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     public void setCadastroPessoaFisica(String cadastroPessoaFisica) {

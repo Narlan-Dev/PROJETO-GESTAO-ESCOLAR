@@ -1,16 +1,18 @@
-package models.Coordenador;
+package models.Registros;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import models.Registros.Registro;
-import models.Registros.RegistroEnumeration;
 
 public class Sala implements Registro{
     private Map<String, Boolean> disciplinasDicionario = new HashMap<>();
     private Icon iconSala = new ImageIcon(getClass().getResource("/views/Cordenador/Resources/iconSalas.png"));
     private String nome ="";
     private int capacidadeMax;
+
+    public Sala() {
+        
+    }
     
     public Icon getIcon(){
         return this.iconSala;

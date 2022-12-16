@@ -5,7 +5,7 @@ import controllers.SerializationManager.Serializer;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 import models.CustomExceptions.FileExistsException;
 import models.CustomExceptions.ReachingMaximumCapacity;
 import models.Registros.Alunos;
@@ -37,6 +37,11 @@ public class ControllerAlunos implements Controller<Alunos> {
     public void delete(Alunos aluno) {
         des.delete(aluno);
     }
+    
+    public List<Alunos> deserializeAll(){
+        return des.deserializeObject(new Alunos());
+    }
+    
     public List<Alunos> searchBySala(Sala sala){
         List<Alunos> alunos = des.deserializeObject(new Alunos());
         List<Alunos> alunosf = null;

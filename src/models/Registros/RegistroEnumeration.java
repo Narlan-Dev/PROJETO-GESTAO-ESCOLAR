@@ -9,6 +9,7 @@ package models.Registros;
  * @author Unknown
  */
 public enum RegistroEnumeration {
+    ROOT("data/"),
     ALUNOS("data/alunos/"),
     PROFESSORES("data/professores/"),
     TURMAS("data/turmas/");

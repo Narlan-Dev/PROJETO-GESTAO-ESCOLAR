@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 import models.CustomExceptions.EmptyCamp;
 import models.Registros.*;
 import models.Registros.Contatos.*;
@@ -428,7 +428,7 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
             DefaultListModel listaDiciplinaModel = new DefaultListModel();
             listaDiciplinaModel.clear();
             String data = jListAnoLetivo.getSelectedValue();
-            sala = controllerSalas.shearchByName(data);
+            sala = controllerSalas.searchByName(data);
             diciplinasDicionario = sala.getDiciplinaDicionario();
             jListDiciplinas.setModel(listaDiciplinaModel);
             for(String diciplina : diciplinasDicionario.keySet()){
@@ -450,16 +450,16 @@ public class TelaCadastroProfessor extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jListDiciplinasMouseClicked
     public void testaCamposObrigatorios() throws EmptyCamp{
-        if(jTextFieldCPF.getText().equals("") &&
-                jTextFieldBairro.getText().equals("") &&
-                jTextFieldCEP.getText().equals("") &&
-                jTextFieldCidade.getText().equals("") &&
-                jTextFieldEmail.getText().equals("") &&
-                jTextFieldLogradouro.getText().equals("") &&
-                jTextFieldNomeCompleto.getText().equals("") &&
-                jTextFieldNumero.getText().equals("") &&
-                jPasswordField1.getText().equals("") &&
-                jTextFieldTelefone.getText().equals("") &&
+        if(jTextFieldCPF.getText().equals("") ||
+                jTextFieldBairro.getText().equals("") ||
+                jTextFieldCEP.getText().equals("") ||
+                jTextFieldCidade.getText().equals("") ||
+                jTextFieldEmail.getText().equals("") ||
+                jTextFieldLogradouro.getText().equals("") ||
+                jTextFieldNomeCompleto.getText().equals("") ||
+                jTextFieldNumero.getText().equals("") ||
+                jPasswordField1.getText().equals("") ||
+                jTextFieldTelefone.getText().equals("") ||
                 jTextFieldUF.getText().equals("")){
             throw new EmptyCamp();
         };

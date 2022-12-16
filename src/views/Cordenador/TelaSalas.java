@@ -5,7 +5,7 @@ import controllers.Views.IconListRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListModel;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 
 public class TelaSalas extends javax.swing.JInternalFrame {
     //private static TelaSalas telaDasSalas;
@@ -118,7 +118,7 @@ public class TelaSalas extends javax.swing.JInternalFrame {
         //DefaultListModel<E> = (DefaultListModel) jListAnoLetivo.getModel();
         try {
             String data = jListAnoLetivo.getSelectedValue();
-            Sala sala = controllerSalas.shearchByName(data);
+            Sala sala = controllerSalas.searchByName(data);
             infoSalas.abrirJanelas(new TelaInfoSalas(sala));
             //jLabelText.setText(sala.getName());
         } catch (Exception e) {

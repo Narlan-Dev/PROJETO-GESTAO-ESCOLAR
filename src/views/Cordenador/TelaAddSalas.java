@@ -4,7 +4,7 @@ import controllers.SerializationManager.Serializer;
 import controllers.Views.GerenteJanelas;
 import controllers.Views.JTextFieldOnlyNumbers;
 import javax.swing.DefaultListModel;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 import models.CustomExceptions.FileExistsException;
 
 public class TelaAddSalas extends javax.swing.JInternalFrame {
@@ -88,8 +88,6 @@ public class TelaAddSalas extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
             Sala sala = new Sala(jTextFieldNomeSala.getText(), Integer.parseInt(jTextFieldCapacidadeMaxima.getText()));
-            //Serializer<Sala> serializer = new Serializer<>();
-            //serializer.serializeObject(sala);
             controllerSalas.add(sala);
             gerenteJanela.abrirJanelas(new TelaSalas());
         } catch (FileExistsException e) {

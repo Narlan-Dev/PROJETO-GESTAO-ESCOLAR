@@ -7,6 +7,7 @@ package controllers.RegistrosControllers;
 import controllers.Controller;
 import controllers.SerializationManager.Deserializer;
 import controllers.SerializationManager.Serializer;
+import java.util.List;
 import javax.swing.JOptionPane;
 import models.CustomExceptions.FileExistsException;
 import models.Registros.Professores;
@@ -17,7 +18,7 @@ import models.Registros.Professores;
  */
 public class ControllerProfessores implements Controller<Professores>{
     private Serializer<Professores> serializer = new Serializer<>();
-        private Deserializer<Professores> des = new Deserializer<>();
+    private Deserializer<Professores> des = new Deserializer<>();
 
 
     @Override
@@ -31,6 +32,10 @@ public class ControllerProfessores implements Controller<Professores>{
             }
         }
     }    
+    
+    public List<Professores> deserializeAll(){
+        return des.deserializeObject(new Professores());
+    }
 
     @Override
     public void update(Professores element, String text, String txt) {

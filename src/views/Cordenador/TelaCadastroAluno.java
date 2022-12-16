@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import models.Coordenador.Sala;
+import models.Registros.Sala;
 import models.CustomExceptions.EmptyCamp;
 import models.CustomExceptions.ReachingMaximumCapacity;
 import models.Registros.Alunos;
@@ -391,22 +391,22 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private void jListAnoLetivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAnoLetivoMouseClicked
         try {
             String data = jListAnoLetivo.getSelectedValue();
-            sala = controllerSalas.shearchByName(data);
+            sala = controllerSalas.searchByName(data);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jListAnoLetivoMouseClicked
     
     public void testaCamposObrigatorios() throws EmptyCamp{
-        if(jTextFieldCPF.getText().equals("") &&
-                jTextFieldBairro.getText().equals("") &&
-                jTextFieldCEP.getText().equals("") &&
-                jTextFieldCidade.getText().equals("") &&
-                jTextFieldEmail.getText().equals("") &&
-                jTextFieldLogradouro.getText().equals("") &&
-                jTextFieldNomeCompleto.getText().equals("") &&
-                jTextFieldNumero.getText().equals("") &&
-                jTextFieldResponsaveis.getText().equals("") &&
-                jTextFieldTelefone.getText().equals("") &&
+        if(jTextFieldCPF.getText().equals("") ||
+                jTextFieldBairro.getText().equals("") ||
+                jTextFieldCEP.getText().equals("") ||
+                jTextFieldCidade.getText().equals("") ||
+                jTextFieldEmail.getText().equals("") ||
+                jTextFieldLogradouro.getText().equals("") ||
+                jTextFieldNomeCompleto.getText().equals("") ||
+                jTextFieldNumero.getText().equals("") ||
+                jTextFieldResponsaveis.getText().equals("") ||
+                jTextFieldTelefone.getText().equals("") ||
                 jTextFieldUF.getText().equals("")){
             throw new EmptyCamp();
         };

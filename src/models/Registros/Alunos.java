@@ -1,6 +1,5 @@
 package models.Registros;
 
-import models.Coordenador.Sala;
 import models.Registros.Contatos.Contatos;
 
 

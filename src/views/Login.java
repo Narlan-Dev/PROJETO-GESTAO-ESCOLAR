@@ -1,14 +1,19 @@
 package views;
-import controllers.RegistrosControllers.ControllerSalas;
+import controllers.RegistrosControllers.*;
 import views.Cordenador.TelaPrincipal;
 import controllers.SerializationManager.Usuarios;
-import models.Coordenador.Sala;
+import java.util.List;
+import java.io.File;
+import models.Registros.*;
 import models.Usuario.*;
 
 public class Login extends javax.swing.JFrame {
     private static Login log;
+    private List<Sala> listaSalas;
     private Usuario user;
     private Usuarios controllerUsuarios;
+    private ControllerAlunos controllerAlunos;
+    private ControllerProfessores controllerProfessores;
     private ControllerSalas controllerSalas;
     
     public static Login getInstancia(){
@@ -18,17 +23,28 @@ public class Login extends javax.swing.JFrame {
         return log;
     }
   
-    public Login() {
+    public Login(){
         initComponents();
         controllerSalas = new ControllerSalas();
         controllerUsuarios = new Usuarios();
+        File pastas;
+        boolean check;
+        for (RegistroEnumeration reg : RegistroEnumeration.values()){
+            pastas = new File(reg.directoryPath);
+            check = pastas.mkdir();
+            if(!check){
+                // implement error
+            }
+        }
         /*Teste*/
-        controllerSalas.add(new Sala("Sala 1", 21));
-        controllerSalas.add(new Sala("Sala 2", 22));
-        controllerSalas.add(new Sala("Sala 3", 23));
-        controllerSalas.add(new Sala("Sala 4", 24));
         controllerUsuarios.add(new ADM("ADM", "1", "1"));
         controllerUsuarios.add(new ADM("Narlan", "1", "2"));
+        listaSalas = controllerSalas.deserializeAll();
+        for(Sala sala : listaSalas){
+            ControllerSalas.icons.put(sala.getName(), sala.getIcon());
+            ControllerSalas.salas.put(sala, sala.getName());
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -78,7 +94,11 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         /* Apenas testes, mas ta funcional */
+        
+        
+        
         try {
+            System.out.println("ok");
             user = controllerUsuarios.shearchByMatriculaAndSenha(jTextFieldLogin.getText(), jPasswordField1.getText());
             if(user instanceof ADM){
                 TelaPrincipal tela = new TelaPrincipal();
@@ -87,6 +107,31 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 //Terminar funcionalidades
             }
+            
+            
+            for(Alunos aluno : controllerAlunos.deserializeAll()){
+                if(aluno.getSenha()  == jPasswordField1.getText() &&
+                        aluno.getLogin() == jTextFieldLogin.getText()){
+                    // lança a braba
+                }
+            }
+            
+            String senha = jPasswordField1.getText();
+            System.out.println(senha);
+            String login = jTextFieldLogin.getText();
+            System.out.println(senha);
+            for(Professores professor : controllerProfessores.deserializeAll()){
+                if(professor.getSenha().equals(senha)){
+                    // lança a braba
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.changeApresentacaoName(user);
+                    tela.show();
+                    this.dispose();
+                }
+            }
+            
+            
+            
             /*if(user.getType().equals("coordenador")){
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.changeApresentacaoName(user);
